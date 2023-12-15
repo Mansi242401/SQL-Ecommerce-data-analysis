@@ -9,7 +9,7 @@ The objective is to use SQL to
 
 I have used MySQL workbench for this project.<br>
 
-Here is the link to the [SQL file]() containing script used to create and ingest records in the database.  
+Here is the link to the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/create_ecomdata.sql) containing script used to create and ingest records in the database.  
 
 ## Overveiw of the ecomdata Database
 
