@@ -9,7 +9,7 @@ The objective is to use SQL to
 
 I have used MySQL workbench for this project.<br>
 
-Here is the link to the [SQL file]() to show the data that lives on the database. This script can be used to create a databse and ingest the data into MySQL instance 
+Here is the link to the [SQL file]() containing script used to create and ingest records in the database.  
 
 ## Overveiw of the ecomdata Database
 
