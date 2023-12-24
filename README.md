@@ -20,6 +20,7 @@ The database comprises six interconnected tables containing ecommerce data relat
 
 Explore the database schema used for this project: [Ecommerce Schema](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Ecommerce.png)
 
+(Note: I utilized [dbdiagram.io](https://dbdiagram.io/) for constructing the ER diagram, providing a visual representation of the database structure.)
 
 ## Analysis Highlights
 
