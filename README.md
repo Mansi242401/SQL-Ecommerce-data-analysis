@@ -8,7 +8,6 @@ I have restricted the scope of analysis to a very critical and fundamental table
 
 Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/create_ecomdata.sql) containing the script for database creation and record ingestion.
 
-<br>
 ## Project Objectives
 
 1. Access and explore the ecommerce database.
@@ -17,13 +16,13 @@ Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysi
 
 ## Database Overview
 
-## Overview of the Ecomdata Database
 The database comprises six interconnected tables containing ecommerce data related to website activity, products, orders, and refunds.
 
 Explore the database schema used for this project: [Ecommerce Schema](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Ecommerce.png)
 
 
 ## Analysis Highlights
+
 The analysis focuses on:
 1. Understanding customer interactions with the website.
 2. Gaining insights into landing page performance and conversion rates.
