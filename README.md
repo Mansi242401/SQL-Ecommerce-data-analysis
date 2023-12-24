@@ -30,7 +30,7 @@ The analysis focuses on:
 3. Exploring sales at the product level.
 
 This project demonstrates my proficiency in SQL and data analysis techniques, providing valuable insights for strategic decision-making in the ecommerce domain.
-Feel free to explore the SQL file and database schema to gain a deeper understanding of the analysis conducted.
+Feel free to explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/create_ecomdata.sql) and [dbdiagram.io](https://dbdiagram.io/) to gain a deeper understanding of the analysis conducted.
 
 
 
