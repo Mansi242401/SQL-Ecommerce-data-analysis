@@ -9,7 +9,7 @@ However, with our analysis, we will understand the following :
 ## Stakeholder Request <br>
 Date of request : April 12,2012 <br>
 
-**1. Site traffic breadkdown**
+**1.(a) Site traffic breadkdown**
 
 We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
 I would like to see a breakdown by **UTM source, campaign and referring domain** if possible.
@@ -39,7 +39,14 @@ ORDER BY num_of_sessions DESC;
 | bsearch    | brand        | https://www.bsearch.com     | 7                |
 
 
+Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
+**1.(b) Deep dive - Site traffic breakdown**
+
+Based on your findings, it seems we should probably dig into **gsearch nonbrand** abit deeper to see what we can do to optimize there.
+i will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
+
+**SQL Query**
 
    
    
