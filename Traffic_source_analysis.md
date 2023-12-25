@@ -6,10 +6,11 @@ However, with our analysis, we will understand the following :
 1. Where our customers are coming from (Email, Social Media, Search and Direct Traffic) and
 2. Which channels are driving the highest quality traffic (CVR - Conversion Rate)
 
-## Stakeholder Request <br>
-Date of request : April 12,2012 <br>
+## Stakeholder Requests <br>
 
 **1.(a) Site traffic breadkdown**
+Date of request : April 12,2012 <br>
+By: CEO <br>
 
 We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
 I would like to see a breakdown by **UTM source, campaign and referring domain** if possible.
@@ -42,11 +43,18 @@ ORDER BY num_of_sessions DESC;
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
 **1.(b) Deep dive - Site traffic breakdown**
-
+By : CEO
 Based on your findings, it seems we should probably dig into **gsearch nonbrand** abit deeper to see what we can do to optimize there.
 i will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
 
-**SQL Query**
+**2. Gsearch Conversion Rate**
+
+Sounds like gsearch nonbrand is our major traffic source, but we need to understand if those sessions are driving sales.
+Could you please calculate the **conversion rate from session to order?**
+Based on what we are paying for clicks we will need a CVR of atleast 4% to make the numbers work.
+
+If we are much lower, we need to reduce the bids. If we are higher, we can increase bids to drive more volume.
+
 
    
    
