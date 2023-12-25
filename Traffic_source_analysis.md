@@ -8,7 +8,7 @@ However, with our analysis, we will understand the following :
 
 ## Stakeholder Request 
 
-Date of request : April 12,2012
+Date of request : April 12,2012 <br>
 **1. Site traffic breadkdown**
 
 We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
