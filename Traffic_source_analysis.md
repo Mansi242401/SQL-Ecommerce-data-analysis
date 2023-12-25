@@ -6,10 +6,15 @@ This analysis is about understandng :
 
 ## Stakeholder Request 
 
+
 **1. Site traffic breadkdown**
 
 We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
 I would like to see a breakdown by **UTM source, campaign and referring domain** if possible.
+
+**SQL QUERY**
+
+
 
 
    
