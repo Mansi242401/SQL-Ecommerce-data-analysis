@@ -27,6 +27,16 @@ GROUP BY 1,2,3
 ORDER BY num_of_sessions DESC;
 
 ```
+**Result**
+| utm_source | utm_campaign | http_referer                | num_of_sessions |
+|------------|--------------|-----------------------------|------------------|
+| gsearch    | nonbrand     | https://www.gsearch.com     | 3613             |
+| NULL       | NULL         | NULL                        | 28               |
+| NULL       | NULL         | https://www.gsearch.com     | 27               |
+| gsearch    | brand        | https://www.gsearch.com     | 26               |
+| NULL       | NULL         | https://www.bsearch.com     | 7                |
+| bsearch    | brand        | https://www.bsearch.com     | 7                |
+
 
 
 
