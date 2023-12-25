@@ -6,9 +6,9 @@ However, with our analysis, we will understand the following :
 1. Where our customers are coming from (Email, Social Media, Search and Direct Traffic) and
 2. Which channels are driving the highest quality traffic (CVR - Conversion Rate)
 
-## Stakeholder Request 
-
+## Stakeholder Request <br>
 Date of request : April 12,2012 <br>
+
 **1. Site traffic breadkdown**
 
 We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
