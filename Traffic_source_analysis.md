@@ -28,6 +28,7 @@ ORDER BY num_of_sessions DESC;
 
 ```
 **Result**
+<br>
 | utm_source | utm_campaign | http_referer                | num_of_sessions |
 |------------|--------------|-----------------------------|------------------|
 | gsearch    | nonbrand     | https://www.gsearch.com     | 3613             |
