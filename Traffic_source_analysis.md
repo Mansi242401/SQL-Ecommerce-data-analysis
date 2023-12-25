@@ -42,12 +42,16 @@ ORDER BY num_of_sessions DESC;
 
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
-**1.(b) Deep dive - Site traffic breakdown**
-By : CEO
+**1.(b) Deep dive - Site traffic breakdown** <br>
+Date : April 12, 2012
+By : CEO <br>
+
 Based on your findings, it seems we should probably dig into **gsearch nonbrand** abit deeper to see what we can do to optimize there.
-i will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
+I will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
 
 **2. Gsearch Conversion Rate**
+Date of request : April 14,2012 <br>
+By: Marketing Manager <br>
 
 Sounds like gsearch nonbrand is our major traffic source, but we need to understand if those sessions are driving sales.
 Could you please calculate the **conversion rate from session to order?**
