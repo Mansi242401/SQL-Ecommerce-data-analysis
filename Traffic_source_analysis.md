@@ -79,5 +79,7 @@ WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_
 |----------|--------|---------------------------------|
 | 3895     | 112    | 0.0288                          |
 
+Since, the conversion rate is at 2.88% which is lower than 4%, the stakeholders may reduce the bids.
+
    
    
