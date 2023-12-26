@@ -9,6 +9,7 @@ However, with our analysis, we will understand the following :
 ## Stakeholder Requests <br>
 
 **1.(a) Site traffic breadkdown**<br>
+/n
 Date of request : April 12,2012 <br>
 By: CEO <br>
 
@@ -43,6 +44,7 @@ ORDER BY num_of_sessions DESC;
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
 **1.(b) Deep dive - Site traffic breakdown** <br>
+/n
 Date : April 12, 2012 <br>
 By : CEO <br>
 
@@ -50,6 +52,7 @@ Based on your findings, it seems we should probably dig into **gsearch nonbrand*
 I will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
 
 **2. Gsearch Conversion Rate**  <br>
+/n
 Date of request : April 14,2012  <br>
 By: Marketing Manager <br>
 
