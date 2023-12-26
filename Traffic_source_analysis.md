@@ -54,7 +54,7 @@ Date of request : April 14,2012  <br>
 By: Marketing Manager <br>
 
 Sounds like gsearch nonbrand is our major traffic source, but we need to understand if those sessions are driving sales.
-Could you please calculate the **conversion rate from session to order?**
+Could you please calculate the **conversion rate(CVR) from session to order?**
 Based on what we are paying for clicks we will need a CVR of atleast 4% to make the numbers work.
 
 If we are much lower, we need to reduce the bids. If we are higher, we can increase bids to drive more volume.
