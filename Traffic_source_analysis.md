@@ -130,7 +130,8 @@ Okay, based on this it looks like gsearch nonbrand is fairly sensitive to bid ch
 We want maximum volume, but don't want to spend more on ads than we can afford.
 Let me think on this. I will follow up with some ideas.
 
-**4. GSearch Device Level Performance**<br>
+**4. GSearch Device Level Performance** <br>
+
 Date of request : May 11,2012 <br>
 By :  Marketing Director <br>
 
