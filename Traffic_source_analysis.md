@@ -43,7 +43,7 @@ ORDER BY num_of_sessions DESC;
 
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
-**1.(b) Deep dive - Site traffic breakdown** <br>
+**1.(b) Deep dive - Site traffic breakdown** <br> (CEO's response)
 <br>
 Date : April 12, 2012 <br>
 By : CEO <br>
