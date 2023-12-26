@@ -75,6 +75,9 @@ WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_
 **Result**
 <br>
 
+| sessions | orders | session_to_order_conversion_rate |
+|----------|--------|---------------------------------|
+| 3895     | 112    | 0.0288                          |
 
    
    
