@@ -130,9 +130,9 @@ Okay, based on this it looks like gsearch nonbrand is fairly sensitive to bid ch
 We want maximum volume, but don't want to spend more on ads than we can afford.
 Let me think on this. I will follow up with some ideas.
 
-**4. GSearch Device Level Performance**
-Date of request : May 11,2012
-By :  Marketing Director
+**4. GSearch Device Level Performance**<br>
+Date of request : May 11,2012 <br>
+By :  Marketing Director <br>
 
 I as trying to use our website on mobile the other day and the experience was not that great.
 Could you pull **conversion rates from session to order** by **device type**?
