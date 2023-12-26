@@ -123,7 +123,8 @@ GROUP BY 1,2;
 
 We observe that the session volume weekly count is lower post bidding down gsearch nonbrand on 2012-04-15.
 
-**3b. RE: Gsearch Volume Trends**
+
+**3b. RE: Gsearch Volume Trends**(Marketing Director's Response)
 
 Okay, based on this it looks like gsearch nonbrand is fairly sensitive to bid changes.
 
@@ -139,6 +140,32 @@ I as trying to use our website on mobile the other day and the experience was no
 Could you pull **conversion rates from session to order** by **device type**?
 
 If desktop performance is better than on mobile, we may be able to bid up for desktop specifically to get more volume
+
+**SQL QUERY:**
+
+```sql
+SELECT
+ws.device_type as device, 
+COUNT(DISTINCT ws.website_session_id) as sessions,
+COUNT(DISTINCT o.order_id) as orders,
+COUNT(DISTINCT o.order_id)/COUNT(DISTINCT ws.website_session_id) as session_to_order_conversion_rate 
+FROM website_sessions ws
+LEFT JOIN
+orders o
+ON ws.website_session_id = o.website_session_id
+GROUP BY 1;
+```
+
+**Results: ** <br>
+
+| device  | sessions | orders | session_to_order_conversion_rate |
+|---------|----------|--------|--------------------------------- |
+| desktop | 4171     | 161    | 0.0386                           |
+| mobile  | 2622     | 28     | 0.0107                           |
+
+The conversion rate is clearly higher when desktop is used to access the website.
+
+
 
 
 
