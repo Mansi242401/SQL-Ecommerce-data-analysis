@@ -54,7 +54,7 @@ I will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
 **2. Gsearch Conversion Rate**  <br>
 <br>
 Date of request : April 14,2012  <br>
-By: Marketing Manager <br>
+By: Marketing Director <br>
 
 Sounds like gsearch nonbrand is our major traffic source, but we need to understand if those sessions are driving sales.
 Could you please calculate the **conversion rate(CVR) from session to order?**
@@ -84,5 +84,64 @@ WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_
 
 Since, the conversion rate is at 2.88% which is lower than 4%, the stakeholders may reduce the bids.
 
-   
+###  Bid Optmization
+
+Analyzing for bid optmization is about understanding the value of various segments of paid traffic, so that you can optiimize your marketing budget.
+
+**3. Gsearch Volume Trends** <br>
+<br>
+Date of request: May 10,2012 <br>
+By :  Marketing Director
+
+Based on your conversion rate analysis, we bid down gsearch nonbrand on 2012-04-15.
+Can you pull **gsearch nonbrand trended session volume, by week** to see if the bid changes has caused volume to drop at all ?
+
+**SQL QUERY**
+```sql
+SELECT
+YEAR(ws.created_at) as year,
+WEEK(ws.created_at) as week,
+MIN(ws.created_at) as first_day_of_week,
+COUNT(DISTINCT ws.website_session_id) as session_volume
+FROM website_sessions ws 
+WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_at < '2012-05-10'
+GROUP BY 1,2;
+```
+**Result**
+<br>
+
+| year | week | first_day_of_week       | session_volume |
+|------|------|--------------------------|-----------------|
+| 2012 | 12   | 2012-03-19 08:04:16     | 896             |
+| 2012 | 13   | 2012-03-25 01:00:54     | 956             |
+| 2012 | 14   | 2012-04-01 00:24:09     | 1152            |
+| 2012 | 15   | 2012-04-08 00:38:30     | 983             |
+| 2012 | 16   | 2012-04-15 00:07:13     | 621             |
+| 2012 | 17   | 2012-04-22 00:08:47     | 594             |
+| 2012 | 18   | 2012-04-29 00:50:42     | 681             |
+| 2012 | 19   | 2012-05-06 01:14:30     | 399             |
+
+We observe that the session volume weekly count is lower post bidding down gsearch nonbrand on 2012-04-15.
+
+**3b. RE: Gsearch Volume Trends**
+
+Okay, based on this it looks like gsearch nonbrand is fairly sensitive to bid changes.
+
+We want maximum volume, but don't want to spend more on ads than we can afford.
+Let me think on this. I will follow up with some ideas.
+
+**4. GSearch Device Level Performance**
+Date of request : May 11,2012
+By :  Marketing Director
+
+I as trying to use our website on mobile the other day and the experience was not that great.
+Could you pull **conversion rates from session to order** by **device type**?
+
+If desktop performance is better than on mobile, we may be able to bid up for desktop specifically to get more volume
+
+
+
+
+
+
    
