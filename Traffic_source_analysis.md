@@ -156,7 +156,7 @@ ON ws.website_session_id = o.website_session_id
 GROUP BY 1;
 ```
 
-**Results: ** <br>
+**Results:** <br>
 
 | device  | sessions | orders | session_to_order_conversion_rate |
 |---------|----------|--------|--------------------------------- |
