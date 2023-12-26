@@ -49,7 +49,7 @@ By : CEO <br>
 Based on your findings, it seems we should probably dig into **gsearch nonbrand** abit deeper to see what we can do to optimize there.
 I will loop in stakeholder 2 tomorrow morning to get his thoughts on next steps.
 
-**2. Gsearch Conversion Rate**
+**2. Gsearch Conversion Rate** <br>
 Date of request : April 14,2012 <br>
 By: Marketing Manager <br>
 
