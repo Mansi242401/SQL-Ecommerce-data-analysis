@@ -12,7 +12,7 @@ Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysi
 ## Project Objectives
 
 1. Access and explore the ecommerce database.
-2. Analyze and optimize marketing channels ([Traffic Source Analysis]()), website performance, and the product portfolio.
+2. Analyze and optimize marketing channels ([Traffic Source Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Traffic_source_analysis.md)), website performance, and the product portfolio.
 
 ## Database Overview
 
