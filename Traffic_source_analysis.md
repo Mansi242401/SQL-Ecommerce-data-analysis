@@ -59,6 +59,22 @@ Based on what we are paying for clicks we will need a CVR of atleast 4% to make 
 
 If we are much lower, we need to reduce the bids. If we are higher, we can increase bids to drive more volume.
 
+**SQL QUERY**
+```sql
+SELECT 
+COUNT(DISTINCT ws.website_session_id) as sessions,
+COUNT(DISTINCT o.order_id) as orders,
+COUNT(DISTINCT o.order_id)/COUNT(DISTINCT ws.website_session_id) as session_to_order_conversion_rate 
+FROM website_sessions ws
+LEFT JOIN
+orders o
+ON ws.website_session_id = o.website_session_id
+WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_at < '2012-04-14';
+
+```
+**Result**
+<br>
+
 
    
    
