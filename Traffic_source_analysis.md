@@ -174,7 +174,7 @@ By: Marketing Director <br>
 I am going to increase our bids on desktop. 
 When we bid higher, we will rank higher in the auctions. So i think your insights here should lead to a sales boost.
 
-**5. Gsearch device level trends** (Marketing Director's response) <br>
+**5. Gsearch device level trends** <br>
 
 Date : June 19,2012 <br>
 By :  Marketing Director<br>
