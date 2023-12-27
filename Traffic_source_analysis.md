@@ -173,9 +173,13 @@ By: Marketing Director <br>
 I am going to increase our bids on desktop. 
 When we bid higher, we will rank higher in the auctions. So i think your insights here should lead to a sales boost.
 
+**5. Gsearch device level trends**
 
+After your device-level analysis of conversion rates, we realized desktop was doing well, so we bid our **gsearch nonbrand desktop campaigns** up on 2012-05-19.
 
+Could you pull **weekly trends for both desktop and mobile** so we can see the impact on volume?
 
+We can use 2012-04-15 until the bid change as a baseline.
 
 
    
