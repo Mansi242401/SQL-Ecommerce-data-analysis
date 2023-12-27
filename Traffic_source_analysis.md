@@ -166,7 +166,7 @@ GROUP BY 1;
 
 The conversion rate is clearly higher when desktop is used to access the website.
 
-**4.b) RE:GSearch Device Level Performance** (Marketinig Director's Response)
+**4.b) RE:GSearch Device Level Performance** (Marketinig Director's Response) <br>
 
 Date of Request : May 11, 2012 <br>
 By: Marketing Director <br>
@@ -174,7 +174,8 @@ By: Marketing Director <br>
 I am going to increase our bids on desktop. 
 When we bid higher, we will rank higher in the auctions. So i think your insights here should lead to a sales boost.
 
-**5. Gsearch device level trends** (Marketing Director's response)
+**5. Gsearch device level trends** (Marketing Director's response) <br>
+
 Date : June 19,2012 <br>
 By :  Marketing Director<br>
 
