@@ -184,5 +184,36 @@ Could you pull **weekly trends for both desktop and mobile** so we can see the i
 
 We can use 2012-04-15 until the bid change as a baseline.
 
+**SQL QUERY:**
+
+```sql
+
+SELECT
+MIN(ws.created_at) as first_day_of_week,
+COUNT(CASE WHEN ws.device_type = 'desktop' THEN ws.website_session_id ELSE NULL END) as dtop_sessions,
+COUNT(CASE WHEN ws.device_type = 'mobile' THEN ws.website_session_id ELSE NULL END) as mob_sessions
+FROM website_sessions ws
+LEFT JOIN
+orders o
+ON ws.website_session_id = o.website_session_id
+WHERE ws.created_at < '2012-06-09' AND ws.created_at > '2012-04-15'
+GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
+
+```
+
+**Results:**
+
+| first_day_of_week       | dtop_sessions | mob_sessions |
+|--------------------------|---------------|--------------|
+| 2012-04-15 00:07:13     | 418           | 261          |
+| 2012-04-22 00:08:47     | 400           | 255          |
+| 2012-04-29 00:50:42     | 492           | 278          |
+| 2012-05-06 01:14:30     | 489           | 309          |
+| 2012-05-13 00:54:12     | 453           | 253          |
+| 2012-05-20 00:43:31     | 729           | 236          |
+| 2012-05-27 00:05:26     | 646           | 229          |
+| 2012-06-03 00:43:23     | 654           | 200          |
+
+
 
    
