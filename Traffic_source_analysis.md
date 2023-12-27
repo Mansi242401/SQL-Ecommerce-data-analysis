@@ -131,7 +131,7 @@ Okay, based on this it looks like gsearch nonbrand is fairly sensitive to bid ch
 We want maximum volume, but don't want to spend more on ads than we can afford.
 Let me think on this. I will follow up with some ideas.
 
-**4. GSearch Device Level Performance** <br>
+**4.a) GSearch Device Level Performance** <br>
 
 Date of request : May 11,2012 <br>
 By :  Marketing Director <br>
@@ -165,7 +165,13 @@ GROUP BY 1;
 
 The conversion rate is clearly higher when desktop is used to access the website.
 
+**4.b) RE:GSearch Device Level Performance** (Marketinig Director's Response)
 
+Date of Request : May 11, 2012 <br>
+By: Marketing Director <br>
+
+I am going to increase our bids on desktop. 
+When we bid higher, we will rank higher in the auctions. So i think your insights here should lead to a sales boost.
 
 
 
