@@ -153,6 +153,7 @@ FROM website_sessions ws
 LEFT JOIN
 orders o
 ON ws.website_session_id = o.website_session_id
+WHERE ws.created_at < '2012-05-11'
 GROUP BY 1;
 ```
 
