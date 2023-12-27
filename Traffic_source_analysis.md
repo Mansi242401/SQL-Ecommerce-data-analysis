@@ -228,5 +228,6 @@ Things are moving in the right direction.
 
 **NEXT STEPS:**
 
-Tha next steps would be to continue to monitor device-level volume and be aware of the bid level impact, conversion performance at the device-level to optimize spend.
+Tha next steps would be to continue to monitor device-level volume and be aware of the bid level impact, 
+conversion performance at the device-level to optimize spend.
 
