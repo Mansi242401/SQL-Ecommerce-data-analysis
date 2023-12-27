@@ -215,7 +215,7 @@ GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
 | 2012-05-27 00:05:26     | 585           | 183          |
 | 2012-06-03 00:43:23     | 582           | 157          |
 
-From the above result, we observe that after the bid change on 2012-05-19, the session count is increased and higher than previous weeks. However, for mobile sessions, the same is reducing.
+From the above result, we observe that after the bid change on 2012-05-19, the session count is increased and is higher than previous weeks. However, for mobile sessions, the same is reducing.
 
 **5b) RE: Gsearch device level trends** <br> (Marketing Director's response)
 
