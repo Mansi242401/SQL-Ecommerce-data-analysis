@@ -226,4 +226,7 @@ Nice work digging into this.
 It looks like mobile has been pretty flat or a little down, but desktop is looking strong, thanks to the bid changes we made based on your previous conversion analysis.
 Things are moving in the right direction.
 
-   
+**NEXT STEPS:**
+
+Tha next steps would be to continue to monitor device-level volume and be aware of the bid level impact, conversion performance at the device-level to optimize spend.
+
