@@ -197,7 +197,7 @@ FROM website_sessions ws
 LEFT JOIN
 orders o
 ON ws.website_session_id = o.website_session_id
-WHERE ws.created_at < '2012-06-09' AND ws.created_at > '2012-04-15'
+WHERE ws.created_at < '2012-06-09' AND ws.created_at > '2012-04-15' AND ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand'
 GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
 
 ```
@@ -206,14 +206,14 @@ GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
 
 | first_day_of_week       | dtop_sessions | mob_sessions |
 |--------------------------|---------------|--------------|
-| 2012-04-15 00:07:13     | 418           | 261          |
-| 2012-04-22 00:08:47     | 400           | 255          |
-| 2012-04-29 00:50:42     | 492           | 278          |
-| 2012-05-06 01:14:30     | 489           | 309          |
-| 2012-05-13 00:54:12     | 453           | 253          |
-| 2012-05-20 00:43:31     | 729           | 236          |
-| 2012-05-27 00:05:26     | 646           | 229          |
-| 2012-06-03 00:43:23     | 654           | 200          |
+| 2012-04-15 00:07:13     | 383           | 238          |
+| 2012-04-22 00:08:47     | 360           | 234          |
+| 2012-04-29 00:50:42     | 425           | 256          |
+| 2012-05-06 01:14:30     | 430           | 282          |
+| 2012-05-13 00:54:12     | 403           | 214          |
+| 2012-05-20 00:43:31     | 661           | 190          |
+| 2012-05-27 00:05:26     | 585           | 183          |
+| 2012-06-03 00:43:23     | 582           | 157          |
 
 
 
