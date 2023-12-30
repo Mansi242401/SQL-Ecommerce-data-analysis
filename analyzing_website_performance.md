@@ -16,10 +16,11 @@ Could you help me get my head around the website by pulling the most-viewed webs
 ```sql
 
 SELECT pageview_url, 
-COUNT(website_session_id) AS session_count
+COUNT(DISTINCT website_pageview_id) AS session_count
 FROM website_pageviews
 WHERE created_at < '2012-06-09'
-GROUP BY pageview_url;
+GROUP BY pageview_url
+ORDER BY session_count DESC;
 
 ```
 
