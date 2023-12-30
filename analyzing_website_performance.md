@@ -36,5 +36,16 @@ ORDER BY session_count DESC;
 | /billing                        | 716           |
 | /thank-you-for-your-order       | 306           |
 
+**1.b) Website Manager's Response**
+
+It definitely seems like **the homepage, the products page, and the Mr. Fuzzy page** get the bulk of our traffic. I would like to understand traffic patterns more.
+I will follow up soon with a request to look at entry pages.
+
+### 2. Top Entry Pages <br>
+By: Website Manager <br>
+Date: June 12, 2012
+
+Would you be able to pull a list of top entry pages? I want to confirm where our users are hitting the site. If you could pull all entry pages and rank them on entry volume, that would be great.
+
 
 
