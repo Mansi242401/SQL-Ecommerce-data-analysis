@@ -81,5 +81,7 @@ Wow, looks like our traffic all comes in through the homepage right now.
 Seems pretty obvious where we should focus on making any improvements.
 I will likely have some follow up requests to look into performance for the home page - stay tuned.
 
+## Landing Page Performance and Testing
+
 
 
