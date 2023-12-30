@@ -47,5 +47,39 @@ Date: June 12, 2012
 
 Would you be able to pull a list of top entry pages? I want to confirm where our users are hitting the site. If you could pull all entry pages and rank them on entry volume, that would be great.
 
+**QUERY:**
+
+```sql
+WITH CTE as 
+(SELECT
+website_pageview_id, 
+website_session_id,
+created_at,
+RANK() OVER (PARTITION BY website_session_id ORDER BY created_at) AS session_rank, 
+pageview_url 
+FROM website_pageviews) 
+
+SELECT pageview_url as landing_page,
+COUNT(DISTINCT website_session_id) 
+FROM CTE
+WHERE CTE.session_rank = 1 AND CTE.created_at < '2012-06-12'
+GROUP BY landing_page
+;
+```
+
+**Result:**
+
+| lending_page_url | sessions_hitting_page |
+|------------------|-----------------------|
+| /home            | 10714                 |
+
+Looks like our traffic all comes through our homepage right now.
+
+**2.b) Website Manager's Response**
+
+Wow, looks like our traffic all comes in through the homepage right now.
+Seems pretty obvious where we should focus on making any improvements.
+I will likely have some follow up requests to look into performance for the home page - stay tuned.
+
 
 
