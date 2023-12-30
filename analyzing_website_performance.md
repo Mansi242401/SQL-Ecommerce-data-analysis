@@ -10,7 +10,7 @@ Date : June 09, 2012
 
 Could you help me get my head around the website by pulling the most-viewed website pages, ranked by session volume?
 
-**QUERY :**
+**QUERY:**
 
 
 ```sql
