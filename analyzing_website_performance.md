@@ -83,5 +83,8 @@ I will likely have some follow up requests to look into performance for the home
 
 ## Landing Page Performance and Testing
 
+Landing Page Analysis and Testing is about understanding the performance of your key landing page and then testing it to improve your results
+
+
 
 
