@@ -92,6 +92,7 @@ Date : June 14, 2012
 The other day you showed us that all our traffic is landing on the homepage right now.We should check how that landing page is performing.
 Can you pull bounce rates for traffic landing on the homepage? I would like to see three numbers : **Sessions, Bounced Sessions and Percentage of sessions that bounced (aka Bounce Rate)**
 
+**Solution:**
 For this business ask, I have used two ways to calculate Bounce Rates : 
 1. Using step by step approach. This approach breaks down the bigger problem into multiple steps. I have extensively used temp table for this
 
