@@ -86,7 +86,7 @@ I will likely have some follow up requests to look into performance for the home
 Landing Page Analysis and Testing is about understanding the performance of your key landing page and then testing it to improve your results
 
 ### 3. Bounce Rate Analysis <br>
-By : Website Manager
+By : Website Manager <br>
 Date : June 14, 2012
 
 The other day you showed us that all our traffic is landing on the homepage right now.We should check how that landing page is performing.
@@ -197,9 +197,9 @@ Ouch, almost a 60% bounce rate.
 That's pretty high from my experience, especially for paid search, which should be high quality traffic.
 I will put together a custom landing page for search, and set up an experiment to see if the new landing page does better. I will likely need your help analyzing the test once we get enough data to judge performance.
 
-### 4. Analyze Landing Page tests
-By : Website Manager
-Date : July 28, 2012
+### 4. Analyze Landing Page tests <br>
+By : Website Manager <br>
+Date : July 28, 2012 <br>
 
 Based on your bounce rate analysis, we ran a new custom landing page(**/lander-1**) in a  50/50 test against the homepage(**/home**) for our gsearch non-brand traffic.
 can you **pull bounce rates for the two groups** so we can evaluate the new page? 
