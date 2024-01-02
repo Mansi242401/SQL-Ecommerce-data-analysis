@@ -85,7 +85,7 @@ I will likely have some follow up requests to look into performance for the home
 
 Landing Page Analysis and Testing is about understanding the performance of your key landing page and then testing it to improve your results
 
-**3. Bounce Rate Analysis** <br>
+### 3. Bounce Rate Analysis <br>
 By : Website Manager
 Date : June 14, 2012
 
