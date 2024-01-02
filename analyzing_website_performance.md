@@ -10,7 +10,7 @@ Date : June 09, 2012
 
 Could you help me get my head around the website by pulling the most-viewed website pages, ranked by session volume?
 
-**QUERY:**
+**SQL QUERY:**
 
 
 ```sql
@@ -47,7 +47,7 @@ Date: June 12, 2012
 
 Would you be able to pull a list of top entry pages? I want to confirm where our users are hitting the site. If you could pull all entry pages and rank them on entry volume, that would be great.
 
-**QUERY:**
+**SQL QUERY:**
 
 ```sql
 WITH CTE as 
@@ -69,7 +69,7 @@ GROUP BY landing_page
 
 **Result:**
 
-| lending_page_url | sessions_hitting_page |
+| landing_page_url | sessions_hitting_page |
 |------------------|-----------------------|
 | /home            | 10714                 |
 
@@ -84,6 +84,109 @@ I will likely have some follow up requests to look into performance for the home
 ## Landing Page Performance and Testing
 
 Landing Page Analysis and Testing is about understanding the performance of your key landing page and then testing it to improve your results
+
+**3. Bounce Rate Analysis** <br>
+By : Website Manager
+Date : June 14, 2012
+
+The other day you showed us that all our traffic is landing on the homepage right now.We should check how that landing page is performing.
+Can you pull bounce rates for traffic landing on the homepage? I would like to see three numbers : **Sessions, Bounced Sessions and Percentage of sessions that bounced (aka Bounce Rate)**
+
+For this business ask, I have used two ways to calculate Bounce Rates : 
+1. Using step by step approach. This approach breaks down the bigger problem into multiple steps. I have extensively used temp table for this
+
+2. In the second method, i have used CTE(Common Table Expressions). This is more complex method and gets the solution in a single query.
+
+Both solutions are valid, but Solution 1 might be more readable and easier to optimize due to its modular structure.
+**SQL QUERY:**
+```sql
+-- Method 1: 
+-- finding first pageview id for relevant sessions 
+
+CREATE TEMPORARY TABLE first_pv
+SELECT website_session_id, 
+MIN(website_pageview_id) AS first_pageview
+FROM website_pageviews
+WHERE created_at < '2012-06-14'
+GROUP BY website_session_id;
+
+-- identify landing page for each session
+CREATE TEMPORARY TABLE sessions_w_home_landing_page
+SELECT website_pageviews.pageview_url AS landing_page_url,
+first_pv.website_session_id AS sessions_hitting_page
+FROM first_pv
+LEFT JOIN website_pageviews
+ON first_pv.first_pageview = website_pageviews.website_pageview_id
+WHERE website_pageviews.pageview_url = '/home' ;-- since website manager asked for the only this extension, in case there are multiple landing pages we need to be specific
+
+-- counting pageviews for each session and filtering that by condition where pageviews count is 1 for each session, meaning where users did not go to the next page after home page
+CREATE TEMPORARY TABLE bounced_sessions
+SELECT sessions_w_home_landing_page.sessions_hitting_page,
+sessions_w_home_landing_page.landing_page_url,
+COUNT(website_pageviews.website_pageview_id) AS count_of_pages_viewed
+FROM
+sessions_w_home_landing_page
+JOIN 
+website_pageviews
+ON sessions_w_home_landing_page.sessions_hitting_page = website_pageviews.website_session_id
+GROUP BY sessions_w_home_landing_page.sessions_hitting_page, 
+sessions_w_home_landing_page.landing_page_url
+HAVING COUNT(website_pageviews.website_pageview_id) = 1;
+
+-- finally, counting the total website sessions, bounced website sessions and bounce rate
+
+SELECT 
+COUNT(DISTINCT sessions_w_home_landing_page.sessions_hitting_page) as total_sessions,
+COUNT(DISTINCT bounced_sessions.sessions_hitting_page) as bounced_sessions,
+COUNT(DISTINCT bounced_sessions.sessions_hitting_page)/COUNT(DISTINCT sessions_w_home_landing_page.sessions_hitting_page) as bounce_rate
+FROM sessions_w_home_landing_page
+LEFT JOIN bounced_sessions
+ON sessions_w_home_landing_page.sessions_hitting_page = bounced_sessions.sessions_hitting_page;
+
+-- Method 2:
+WITH CTE AS (
+  SELECT
+    website_pageview_id,
+    website_session_id,
+    created_at,
+    RANK() OVER (PARTITION BY website_session_id ORDER BY created_at) AS session_rank,
+    pageview_url 
+  FROM
+    website_pageviews
+)
+
+SELECT
+  CTE.pageview_url AS landing_page_url,
+  COUNT(DISTINCT CTE.website_session_id) AS total_sessions,
+  COUNT(DISTINCT CASE WHEN CTE.session_rank = 1 AND NOT EXISTS (
+    SELECT 1
+    FROM CTE AS SecondPage
+    WHERE SecondPage.website_session_id = CTE.website_session_id
+      AND SecondPage.session_rank > 1
+  ) THEN CTE.website_session_id END) AS bounced_sessions,
+  ROUND(
+    COUNT(DISTINCT CASE WHEN CTE.session_rank = 1 AND NOT EXISTS (
+      SELECT 1
+      FROM CTE AS SecondPage
+      WHERE SecondPage.website_session_id = CTE.website_session_id
+        AND SecondPage.session_rank > 1
+    ) THEN CTE.website_session_id END) /
+    COUNT(DISTINCT CTE.website_session_id) * 100,
+    2
+  ) AS bounce_rate
+FROM
+  CTE 
+WHERE 
+  CTE.created_at < '2012-06-14' and CTE.pageview_url = '/home'
+GROUP BY
+  CTE.pageview_url;
+
+```
+
+**Result:**
+| total_sessions | bounced_sessions | bounce_rate |
+| -------------- | ---------------- | ----------- |
+| 11048          | 6538             | 0.5918      |
 
 
 
