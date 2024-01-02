@@ -189,5 +189,10 @@ GROUP BY
 | 11048          | 6538             | 0.5918      |
 
 
+**3.b) Website Manager's Response**
+
+Ouch, almost a 60% bounce rate. 
+That's pretty high from my experience, especially for paid search, which should be high quality traffic.
+I will put together a custom landing page for search, and set up an experiment to see if the new landing page does better. I will likely need your help analyzing the test once we get enough data to judge performance.
 
 
