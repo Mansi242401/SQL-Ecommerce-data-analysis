@@ -98,7 +98,8 @@ For this business ask, I have used two ways to calculate Bounce Rates :
 
 2. In the second method, i have used CTE(Common Table Expressions). This is more complex method and gets the solution in a single query.
 
-Both solutions are valid, but Solution 1 might be more readable and easier to optimize due to its modular structure.
+Both solutions are valid, but Solution 1 might be more readable and easier to optimize due to its modular structure.<br>
+
 **SQL QUERY:**
 ```sql
 -- Method 1: 
