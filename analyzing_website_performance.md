@@ -196,4 +196,11 @@ Ouch, almost a 60% bounce rate.
 That's pretty high from my experience, especially for paid search, which should be high quality traffic.
 I will put together a custom landing page for search, and set up an experiment to see if the new landing page does better. I will likely need your help analyzing the test once we get enough data to judge performance.
 
+### 4. Analyze Landing Page tests
+By : Website Manager
+Date : July 28, 2012
+
+Based on your bounce rate analysis, we ran a new custom landing page(**/lander-1**) in a  50/50 test against the homepage(**/home**) for our gsearch non-brand traffic.
+can you **pull bounce rates for the two groups** so we can evaluate the new page? 
+Make sure to look at the time period where **/lander-1** was getting the traffic so that it is a fair comparison.
 
