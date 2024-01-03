@@ -300,4 +300,13 @@ I will work with the Marketing Director to get campaigns updated so that all non
 In a few weeks, i would like you to look at trends to make sure things have moved in the right direction.
 
 
+### 5. Landing Page Trend Analysis <br>
+
+By: Website Manager <br>
+Date :  August 31, 2012 <br>
+
+Could you pull the volume of **paid search nonbrand traffic landing on /home and /lander-1, trended weekly since June 1st.** I want to confirm tha traffic is all routed correctly.
+
+Could you also **pull over overall paid search bounce rate trended weekly?** I want to make sure that lender change has improved the overall picture.
+
 
