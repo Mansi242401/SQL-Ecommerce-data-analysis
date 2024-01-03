@@ -282,4 +282,22 @@ GROUP BY 1
 ;
 
 ```
+ **Results:**
+
+ | landing_page | total_sessions | bounced_sessions | bounce_rate |
+| ------------ | -------------- | ----------------- | ----------- |
+| /home        | 2261           | 1319              | 0.5834      |
+| /lander-1    | 2315           | 1232              | 0.5322      |
+
+It looks like there is a slight fall in the bounce rate when lander-1 is used as a landing page. 
+
+**4.b) Website Manager's Response:**
+
+This is so great. It looks like custom lander has a lower bounce rate. Success!!
+
+I will work with the Marketing Director to get campaigns updated so that all nonbrand paid traffic is pointing to the new page.
+
+In a few weeks, i would like you to look at trends to make sure things have moved in the right direction.
+
+
 
