@@ -205,3 +205,81 @@ Based on your bounce rate analysis, we ran a new custom landing page(**/lander-1
 can you **pull bounce rates for the two groups** so we can evaluate the new page? 
 Make sure to look at the time period where **/lander-1** was getting the traffic so that it is a fair comparison.
 
+**QUERY:** <br>
+
+```sql
+
+-- A/B Test
+-- Steps:
+-- 1. find out when the new page was launched
+-- 2. find first_website_pageview_id for relevant sessions
+-- 3. identifying the landing page for each session
+-- 4. count pageviews for each session to identify bounces
+-- 5. summarise total sessions and bounce rates, by landing page
+
+
+-- 1. Finding the first instance of /lander-1 page to set the analysis timeframe
+
+SELECT 
+MIN(created_at) as first_created_at,
+MIN(website_pageview_id) as first_pageview_id
+FROM website_pageviews
+WHERE pageview_url = '/lander-1' and created_at < '2012-07-28';
+
+-- first_pageview_id for /lander-1 is 23504
+
+-- 2.  find first_website_pageview_id for relevant sessions and store them in a temp table - first_test_pageviews
+CREATE TEMPORARY TABLE first_test_pageviews
+SELECT 
+wp.website_session_id,
+MIN(wp.website_pageview_id) as min_pageview_id
+FROM website_pageviews wp
+INNER JOIN website_sessions ws -- since we need to find for gsearch nonbrand 
+ON wp.website_session_id = ws.website_session_id
+WHERE ws.utm_source = 'gsearch' 
+AND ws.utm_campaign = 'nonbrand'
+AND ws.created_at < '2012-07-28'
+AND wp.website_pageview_id > 23504
+GROUP BY wp.website_session_id;
+;
+
+-- 3. Fetch the landing page url for each session and restricting it to only /home page and /lander-1 page
+
+CREATE TEMPORARY TABLE non_brand_test_sessions_w_landing_page
+SELECT ftp.website_session_id,
+wp.pageview_url as landing_page
+FROM first_test_pageviews ftp
+LEFT JOIN website_pageviews wp
+ON ftp.min_pageview_id = wp.website_pageview_id
+WHERE wp.pageview_url IN ('/home', '/lander-1');
+
+-- 4. Count pageviews for each session and then find only the bounced sessions using 'having' clause
+
+CREATE TEMPORARY TABLE nonbrand_test_bounced_sessions
+SELECT ts.website_session_id,
+ts.landing_page,
+COUNT(wp.website_pageview_id) AS count_of_pages_viewed
+FROM website_pageviews wp
+LEFT JOIN non_brand_test_sessions_w_landing_page ts
+ON wp.website_session_id = ts.website_session_id
+GROUP BY 1, 2
+HAVING COUNT(wp.website_pageview_id)  = 1 ;
+
+-- 5.Summarize total sessions, bounced sessions by landing page
+
+SELECT 
+non_brand_test_sessions_w_landing_page.landing_page,
+COUNT(DISTINCT non_brand_test_sessions_w_landing_page.website_session_id
+) AS total_sessions,
+COUNT(DISTINCT 
+nonbrand_test_bounced_sessions.website_session_id
+) AS bounced_sessions,
+COUNT(DISTINCT nonbrand_test_bounced_sessions.website_session_id)/COUNT(DISTINCT non_brand_test_sessions_w_landing_page.website_session_id) AS bounce_rate
+FROM non_brand_test_sessions_w_landing_page
+LEFT JOIN nonbrand_test_bounced_sessions
+ON non_brand_test_sessions_w_landing_page.website_session_id = nonbrand_test_bounced_sessions.website_session_id
+GROUP BY 1
+;
+
+```
+
