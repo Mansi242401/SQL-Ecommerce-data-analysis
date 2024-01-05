@@ -385,3 +385,8 @@ This is great. Thank you !
 Looks like both pages are getting traffic for a while and then we **fully switched over to the custom lander** , as intended and it looks like our **overall bounce rate has come down over time** nice !
 
 I will do a full deep dive into our site and will follow up with asks.
+
+## Analyzing and Testing Conversion Funnel
+
+Conversion Funnel Analysis is about **understanding and optimizing each step of your user's experience on their journey toward purchasing your products**
+for performing this analysis, we will look at each step in our conversion flow to see **how many customers drop off and how many continue on at each step**
