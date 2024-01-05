@@ -389,4 +389,14 @@ I will do a full deep dive into our site and will follow up with asks.
 ## Analyzing and Testing Conversion Funnel
 
 Conversion Funnel Analysis is about **understanding and optimizing each step of your user's experience on their journey toward purchasing your products**
-for performing this analysis, we will look at each step in our conversion flow to see **how many customers drop off and how many continue on at each step**
+for performing this analysis, we will look at each step in our conversion flow to see **how many customers drop off and how many continue on at each step**.
+The KPI used for each page in the conversion flow is called the clickthrough rate for that page.
+
+### 6. Help Analyzing Conversion Funnel <br>
+By: Website Manager <br>
+Date: Sep 5, 2012
+
+I would like to understand where we lose our gsearch vistors between the new /lander-1 page and placing an order. **can you build a full conversion funnel, analyzing how many customers make it to each step?**
+
+Start with **/lander-1** and build the funnel all the way to our **thankyou page**. Please use data since **August 5th**
+
