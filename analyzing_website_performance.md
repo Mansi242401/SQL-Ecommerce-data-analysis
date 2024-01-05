@@ -239,7 +239,7 @@ ON wp.website_session_id = ws.website_session_id
 WHERE ws.utm_source = 'gsearch' 
 AND ws.utm_campaign = 'nonbrand'
 AND ws.created_at < '2012-07-28'
-AND wp.website_pageview_id > 23504
+AND wp.website_pageview_id > 23503
 GROUP BY wp.website_session_id;
 ;
 
