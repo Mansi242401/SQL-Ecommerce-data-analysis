@@ -309,4 +309,79 @@ Could you pull the volume of **paid search nonbrand traffic landing on /home and
 
 Could you also **pull over overall paid search bounce rate trended weekly?** I want to make sure that lender change has improved the overall picture.
 
+```sql
 
+-- 1. finding the first website_pageview_id for relevant sessions alongwith the pageview counts
+-- 2. identifying the sessions where landing pages are '/home' or '/lander-1'
+-- 3. calculating weekly bounce rates for each landing page.
+
+CREATE TEMPORARY TABLE first_pageview_sessionwise_w_pagecount
+SELECT 
+wp.website_session_id,
+MIN(wp.website_pageview_id) as website_pageview_id,
+COUNT(wp.website_pageview_id) as count_pageviews
+FROM website_sessions ws
+LEFT JOIN website_pageviews wp
+ON wp.website_session_id = ws.website_session_id
+WHERE wp.created_at >= '2012-06-01' and wp.created_at < '2012-08-31'
+AND ws.utm_source = 'gsearch' 
+AND ws.utm_campaign = 'nonbrand'
+GROUP BY 1;
+
+
+CREATE TEMPORARY TABLE session_count_w_lander_created_at
+SELECT fps.website_session_id,
+fps.website_pageview_id as first_pageview_id,
+wp.pageview_url as first_pageview_url,
+wp.created_at,
+fps.count_pageviews
+FROM first_pageview_sessionwise_w_pagecount fps
+LEFT JOIN website_pageviews wp
+ON fps.website_pageview_id = wp.website_pageview_id
+WHERE wp.pageview_url IN ('/home', '/lander-1');
+
+
+SELECT
+YEAR(created_at) as s_year,
+WEEK(created_at) as s_week,
+MIN(DATE(created_at)) as week_start_date,
+-- COUNT(DISTINCT website_session_id) As total_sessions,
+-- COUNT(CASE WHEN count_pageviews = 1 THEN website_session_id ELSE NULL END) AS bounced_sessions,
+COUNT(CASE WHEN count_pageviews = 1 THEN website_session_id ELSE NULL END) * 1.0 / COUNT(DISTINCT website_session_id) as bounce_rate,
+COUNT(CASE WHEN first_pageview_url = '/home' THEN website_session_id ELSE NULL END) AS home_page_count,
+COUNT(CASE WHEN first_pageview_url = '/lander-1' THEN website_session_id ELSE NULL END) AS lander_page_count
+FROM session_count_w_lander_created_at
+GROUP BY 1,2;
+
+```
+
+**Results:**
+
+| s_year | s_week | week_start_date | bounce_rate | home_page_count | lander_page_count |
+| ------ | ------ | --------------- | ----------- | --------------- | ------------------ |
+| 2012   | 22     | 2012-06-01      | 0.60571     | 175             | 0                  |
+| 2012   | 23     | 2012-06-03      | 0.58712     | 792             | 0                  |
+| 2012   | 24     | 2012-06-10      | 0.61600     | 875             | 0                  |
+| 2012   | 25     | 2012-06-17      | 0.55819     | 492             | 350                |
+| 2012   | 26     | 2012-06-24      | 0.58278     | 369             | 386                |
+| 2012   | 27     | 2012-07-01      | 0.58205     | 392             | 388                |
+| 2012   | 28     | 2012-07-08      | 0.56679     | 390             | 411                |
+| 2012   | 29     | 2012-07-15      | 0.54235     | 429             | 421                |
+| 2012   | 30     | 2012-07-22      | 0.51382     | 402             | 394                |
+| 2012   | 31     | 2012-07-29      | 0.49708     | 33              | 995                |
+| 2012   | 32     | 2012-08-05      | 0.53818     | 0               | 1087               |
+| 2012   | 33     | 2012-08-12      | 0.51403     | 0               | 998                |
+| 2012   | 34     | 2012-08-19      | 0.50099     | 0               | 1012               |
+| 2012   | 35     | 2012-08-26      | 0.53902     | 0               | 833                |
+
+As it can be observed that the bounce rates are much lower from 62% to 54% post complete paid traffic is pointing to the new landing page - '/lander-1'.
+Let's see what is the response from Website Manager
+
+
+**5.b) Website Manager's Response** <br>
+
+This is great. Thank you !
+
+Looks like both pages are getting traffic for a while and then we **fully switched over to the custom lander** , as intended and it looks like our **overall bounce rate has come down over time** nice !
+
+I will do a full deep dive into our site and will follow up with asks.
