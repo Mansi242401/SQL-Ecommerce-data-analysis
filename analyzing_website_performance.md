@@ -390,7 +390,7 @@ I will do a full deep dive into our site and will follow up with asks.
 
 Conversion Funnel Analysis is about **understanding and optimizing each step of your user's experience on their journey toward purchasing your products**
 for performing this analysis, we will look at each step in our conversion flow to see **how many customers drop off and how many continue on at each step**.
-The KPI used for each page in the conversion flow is called the clickthrough rate for that page.
+The KPI used for each page in the conversion flow is called the clickthrough rate(CTR) for that page.
 
 ### 6. Help Analyzing Conversion Funnel <br>
 By: Website Manager <br>
