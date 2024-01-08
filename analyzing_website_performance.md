@@ -439,7 +439,7 @@ COUNT(CASE WHEN swu.pageview_url = '/the-original-mr-fuzzy' THEN swu.website_ses
 COUNT(CASE WHEN swu.pageview_url = '/cart' THEN swu.website_session_id ELSE NULL END) AS cart_count,
 COUNT(CASE WHEN swu.pageview_url = '/shipping' THEN swu.website_session_id ELSE NULL END) AS shipping_count,
 COUNT(CASE WHEN swu.pageview_url = '/billing' THEN swu.website_session_id ELSE NULL END) AS billing_count,
-COUNT(CASE WHEN swu.pageview_url = '/thankyou-for-your-order' THEN swu.website_session_id ELSE NULL END) AS thankyou_count
+COUNT(CASE WHEN swu.pageview_url = '/thank-you-for-your-order' THEN swu.website_session_id ELSE NULL END) AS thankyou_count
 FROM
 (
 SELECT ws.website_session_id,
@@ -450,7 +450,7 @@ ON wp.website_session_id = ws.website_session_id
 WHERE wp.created_at > '2012-08-04' and wp.created_at < '2012-09-05'
 AND ws.utm_source = 'gsearch'
 AND ws.utm_campaign = 'nonbrand'
-AND wp.pageview_url IN ('/lander-1', '/products', '/the-original-mr-fuzzy', '/cart', '/shipping', '/billing', '/thankyou-for-your-order')
+AND wp.pageview_url IN ('/lander-1', '/products', '/the-original-mr-fuzzy', '/cart', '/shipping', '/billing', '/thank-you-for-your-order')
 ) AS swu
 )
 SELECT 
@@ -468,7 +468,7 @@ FROM session_counts_by_pageviews;
 
 | Lander CTR | Products CTR | Fuzzy CTR | Cart CTR | Shipping CTR | Billing CTR |
 |------------|--------------|-----------|----------|--------------|-------------|
-|   0.4699   |    0.7395    |   0.4365  |  0.6671  |    0.7927    |    0.0000   |
+|   0.4699   |    0.7395    |   0.4365  |  0.6671  |    0.7927    |    0.4360   |
 
 
 
