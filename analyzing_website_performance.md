@@ -309,6 +309,8 @@ Could you pull the volume of **paid search nonbrand traffic landing on /home and
 
 Could you also **pull over overall paid search bounce rate trended weekly?** I want to make sure that lender change has improved the overall picture.
 
+**QUERY:**<br>
+
 ```sql
 
 -- 1. finding the first website_pageview_id for relevant sessions alongwith the pageview counts
@@ -425,6 +427,48 @@ In the world of online shopping, the journey from discovering a product to compl
 7. **Order Confirmation (/thankyou-for-your-order):**
    - The final stage involves a confirmation page, expressing gratitude for the order and providing essential details such as order number and estimated delivery date.
 
+**QUERY:** <br>
+
+```sql
+
+WITH session_counts_by_pageviews AS (
+SELECT 
+COUNT(CASE WHEN swu.pageview_url = '/lander-1' THEN swu.website_session_id ELSE NULL END) AS sessions_count,
+COUNT(CASE WHEN swu.pageview_url = '/products' THEN swu.website_session_id ELSE NULL END) AS products_count,
+COUNT(CASE WHEN swu.pageview_url = '/the-original-mr-fuzzy' THEN swu.website_session_id ELSE NULL END) AS fuzzy_count,
+COUNT(CASE WHEN swu.pageview_url = '/cart' THEN swu.website_session_id ELSE NULL END) AS cart_count,
+COUNT(CASE WHEN swu.pageview_url = '/shipping' THEN swu.website_session_id ELSE NULL END) AS shipping_count,
+COUNT(CASE WHEN swu.pageview_url = '/billing' THEN swu.website_session_id ELSE NULL END) AS billing_count,
+COUNT(CASE WHEN swu.pageview_url = '/thankyou-for-your-order' THEN swu.website_session_id ELSE NULL END) AS thankyou_count
+FROM
+(
+SELECT ws.website_session_id,
+wp.pageview_url
+FROM website_pageviews wp
+LEFT JOIN website_sessions ws
+ON wp.website_session_id = ws.website_session_id
+WHERE wp.created_at > '2012-08-04' and wp.created_at < '2012-09-05'
+AND ws.utm_source = 'gsearch'
+AND ws.utm_campaign = 'nonbrand'
+AND wp.pageview_url IN ('/lander-1', '/products', '/the-original-mr-fuzzy', '/cart', '/shipping', '/billing', '/thankyou-for-your-order')
+) AS swu
+)
+SELECT 
+products_count/sessions_count AS lander_CTR,
+fuzzy_count/products_count AS products_CTR,
+cart_count/fuzzy_count AS fuzzy_CTR,
+shipping_count/cart_count AS cart_CTR,
+billing_count/shipping_count AS shipping_CTR,
+thankyou_count/billing_count AS billing_CTR
+FROM session_counts_by_pageviews;
+
+```
+
+**RESULT:** <br>
+
+| Lander CTR | Products CTR | Fuzzy CTR | Cart CTR | Shipping CTR | Billing CTR |
+|------------|--------------|-----------|----------|--------------|-------------|
+|   0.4699   |    0.7395    |   0.4365  |  0.6671  |    0.7927    |    0.0000   |
 
 
 
