@@ -410,7 +410,7 @@ In the world of online shopping, the journey from discovering a product to compl
 2. **Product Listings (/products):**
    - Users navigate to the product listings, where they can browse through different categories, view product details, and find items of interest.
 
-3. **Product Details (/product1):**
+3. **Product Details (/the-original-mr-fuzzy):**
    - Upon finding a specific product, users click to view more details, including images, specifications, and customer reviews.
 
 4. **Shopping Cart (/cart):**
