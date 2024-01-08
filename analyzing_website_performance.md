@@ -470,6 +470,12 @@ FROM session_counts_by_pageviews;
 |------------|--------------|-----------|----------|--------------|-------------|
 |   0.4699   |    0.7395    |   0.4365  |  0.6671  |    0.7927    |    0.4360   |
 
+The above results indicate that lander page, Fuzzy page and Billing page has the lowest CTRs. Hence, those should be the focus 
 
+**6.b) Website Manager's Response** <br>
+
+This analysis is really helpful. Looks like we should focus on **Lander page, Mr. Fuzzy page and the billing page** which have the lowest Click Through Rates.
+I have some ideas for the billing page that i think will make customers more confortable entering their credit card info. **I will test a new page soon and will ask for 
+help analyzing performance**
 
 
