@@ -482,6 +482,47 @@ help analyzing performance**
 By : Website Manager <br>
 Date : November 10, 2012 <br>
 
-We tested an updated billing page based on your funnel analysis. Can you take a look and see whether **/billing-2** is doing any better than the original **/billing** page ?
+We tested an updated billing page based on your funnel analysis at 50/50. Can you take a look and see whether **/billing-2** is doing any better than the original **/billing** page ?
 
 We are wondering **what % of sessions on those pages end up placing an order.** FYI - we ran this test for all traffic not just for our search visitors.
+
+**QUERY:** <br>
+
+```sql
+
+SELECT 
+pageview_url,
+COUNT(DISTINCT website_session_id) as sessions,
+COUNT(DISTINCT order_id) as orders,
+COUNT(DISTINCT order_id)/COUNT(DISTINCT website_session_id) as billing_to_order_rt
+FROM
+(
+SELECT wp.website_session_id,
+wp.pageview_url,
+o.order_id
+FROM website_pageviews wp
+LEFT JOIN orders o
+ON wp.website_session_id = o.website_session_id
+WHERE wp.created_at > '2012-09-09' and wp.created_at < '2012-11-10'
+AND wp.pageview_url IN ('/billing','/billing-2')
+) AS billing_with_orders
+GROUP BY pageview_url;
+
+```
+
+**RESULT:** <br>
+
+| Pageview URL | Sessions | Orders | Billing to Order Rate |
+|--------------|----------|--------|-----------------------|
+|   /billing   |   665    |  304   |        0.4571         |
+|  /billing-2  |   654    |  410   |        0.6269         |
+
+The above results clearly indicate that website manager has been successful in increasing the conversion rates from 46% to 63% by changing the billing page. Let's see what she has to say.
+
+**7.b) Website Manager's Response** <br>
+
+Looks like the new version of billing page is doing a much better job converting customers... yes!
+
+I will let engineering to roll this out to all our customers right away. Your insights just made us some major revenues.
+
+
