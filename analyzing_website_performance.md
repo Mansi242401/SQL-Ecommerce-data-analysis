@@ -479,7 +479,8 @@ I have some ideas for the billing page that i think will make customers more con
 help analyzing performance**
 
 ### 7. Conversion funnel test results <br>
-
+By : Website Manager <br>
+Date : November 10, 2012
 We tested an updated billing page based on your funnel analysis. Can you take a look and see whether **/billing-2** is doing any better than the original **/billing** page ?
 
 We are wondering **what % of sessions on those pages end up placing an order.** FYI - we ran this test for all traffic not just for our search visitors.
