@@ -13,6 +13,7 @@ Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysi
 
 1. Access and explore the ecommerce database.
 2. Analyze and optimize marketing channels ([Traffic Source Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Traffic_source_analysis.md)), website performance ([Website Performance Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/analyzing_website_performance.md)), and the product portfolio.
+3. Use website traffic and website performance data to tell a growth story of the company that has been live for 8 months ([Company's growth story]())
 
 ## Database Overview
 
@@ -28,8 +29,6 @@ The analysis focuses on:
 1. Understanding customer interactions with the website. 
 2. Gaining insights into landing page performance and conversion rates.
 3. Exploring sales at the product level.
-
-
 
 This project demonstrates my proficiency in SQL and data analysis techniques (including data modeling), providing valuable insights for strategic decision-making in the ecommerce domain.
 Feel free to explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/create_ecomdata.sql) and [dbdiagram.io](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Ecommerce.png) to gain a deeper understanding of the analysis conducted.
