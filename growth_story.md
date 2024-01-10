@@ -73,6 +73,7 @@ GROUP BY 1,2;
 | 2012 | 10    | 5197              | 337            | 219              | 15           |
 | 2012 | 11    | 8506              | 383            | 356              | 17           |
 
+Brand orders have also increased over time which is a good sign for its performance. <br>
 
 3. For gsearch nonbrand category, pull monthly sessions and orders split by device type.
 
