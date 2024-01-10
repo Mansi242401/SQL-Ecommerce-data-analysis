@@ -98,18 +98,19 @@ GROUP BY 1,2;
 ```
 **Results:**
 
-| yr   | month | mobile_sessions | desktop_sessions | mobile_orders | desktop_orders |
-|------|-------|------------------|-------------------|---------------|-----------------|
-| 2012 | 3     | 727              | 1133              | 10            | 50              |
-| 2012 | 4     | 1393             | 2181              | 12            | 80              |
-| 2012 | 5     | 1062             | 2348              | 10            | 87              |
-| 2012 | 6     | 817              | 2761              | 8             | 113             |
-| 2012 | 7     | 955              | 2856              | 15            | 130             |
-| 2012 | 8     | 1238             | 3639              | 10            | 174             |
-| 2012 | 9     | 1166             | 3325              | 19            | 169             |
-| 2012 | 10    | 1386             | 4148              | 21            | 213             |
-| 2012 | 11    | 2211             | 6678              | 37            | 336             |
+| yr   | month | mobile_sessions | desktop_sessions | mobile_orders | desktop_orders | conversion_rate_mobile | conversion_rate_desktop |
+|------|-------|------------------|-------------------|---------------|-----------------|------------------------|--------------------------|
+| 2012 | 3     | 727              | 1133              | 10            | 50              | 0.0138                 | 0.0441                   |
+| 2012 | 4     | 1393             | 2181              | 12            | 80              | 0.0086                 | 0.0367                   |
+| 2012 | 5     | 1062             | 2348              | 10            | 87              | 0.0094                 | 0.0371                   |
+| 2012 | 6     | 817              | 2761              | 8             | 113             | 0.0098                 | 0.0409                   |
+| 2012 | 7     | 955              | 2856              | 15            | 130             | 0.0157                 | 0.0455                   |
+| 2012 | 8     | 1238             | 3639              | 10            | 174             | 0.0081                 | 0.0478                   |
+| 2012 | 9     | 1166             | 3325              | 19            | 169             | 0.0163                 | 0.0508                   |
+| 2012 | 10    | 1386             | 4148              | 21            | 213             | 0.0152                 | 0.0514                   |
+| 2012 | 11    | 2211             | 6678              | 37            | 336             | 0.0167                 | 0.0503                   |
 
+It is clear from the above result that conversion rate is higher for desktop. However, the overal trend for both mobile and desktop is increasing over the 8 months period.
 
 5. Also, apart from gsearch show monthly trend for each of other website channels
 6. find session to order conversion rate by month
