@@ -5,7 +5,7 @@ The website has been live for 8 months, and CEO wants to present the company's p
 
 ## CEO's Request on Nov 27, 2012
 
-From previous results, it is clear that majority traffic is coming from gsearch nonbrand source. 
+From previous results, it is clear that majority traffic is coming from gsearch source. 
 1. Find monthly trends for gsearch sessions and orders so that we can showcase the growth there.
 
 ```sql
