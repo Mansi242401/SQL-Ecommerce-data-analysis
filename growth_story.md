@@ -84,7 +84,9 @@ MONTH(website_sessions.created_at) AS month,
 COUNT(CASE WHEN website_sessions.device_type = 'mobile' THEN website_sessions.website_session_id ELSE NULL END) as mobile_sessions,
 COUNT(CASE WHEN website_sessions.device_type = 'desktop' THEN website_sessions.website_session_id ELSE NULL END) AS desktop_sessions,
 COUNT(CASE WHEN website_sessions.device_type = 'mobile' THEN orders.order_id ELSE NULL END) AS mobile_orders,
-COUNT(CASE WHEN website_sessions.device_type = 'desktop' THEN orders.order_id ELSE NULL END) AS desktop_orders
+COUNT(CASE WHEN website_sessions.device_type = 'desktop' THEN orders.order_id ELSE NULL END) AS desktop_orders,
+COUNT(CASE WHEN website_sessions.device_type = 'mobile' THEN orders.order_id ELSE NULL END)/COUNT(CASE WHEN website_sessions.device_type = 'mobile' THEN website_sessions.website_session_id ELSE NULL END) AS conversion_rate_mobile,
+COUNT(CASE WHEN website_sessions.device_type = 'desktop' THEN orders.order_id ELSE NULL END)/COUNT(CASE WHEN website_sessions.device_type = 'desktop' THEN website_sessions.website_session_id ELSE NULL END) AS conversion_rate_desktop
 FROM
 website_sessions
 LEFT JOIN orders
@@ -93,7 +95,22 @@ WHERE website_sessions.utm_source = 'gsearch'
 AND website_sessions.created_at < '2012-11-27'
 GROUP BY 1,2;
 
-``` 
+```
+**Results:**
+
+| yr   | month | mobile_sessions | desktop_sessions | mobile_orders | desktop_orders |
+|------|-------|------------------|-------------------|---------------|-----------------|
+| 2012 | 3     | 727              | 1133              | 10            | 50              |
+| 2012 | 4     | 1393             | 2181              | 12            | 80              |
+| 2012 | 5     | 1062             | 2348              | 10            | 87              |
+| 2012 | 6     | 817              | 2761              | 8             | 113             |
+| 2012 | 7     | 955              | 2856              | 15            | 130             |
+| 2012 | 8     | 1238             | 3639              | 10            | 174             |
+| 2012 | 9     | 1166             | 3325              | 19            | 169             |
+| 2012 | 10    | 1386             | 4148              | 21            | 213             |
+| 2012 | 11    | 2211             | 6678              | 37            | 336             |
+
+
 5. Also, apart from gsearch show monthly trend for each of other website channels
 6. find session to order conversion rate by month
 7. For gsearch lander test, please **estimate the revenue that test earned us**
