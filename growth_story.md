@@ -37,6 +37,7 @@ GROUP BY 1,2;
 | 2012 | 10    | 5534     | 234    | 0.0423           |
 | 2012 | 11    | 8889     | 373    | 0.0420           |
 
+We can clearly observe from above results that conversion rate is growing with time. <br>
 
 2. Next, it would be great to see the monthly trend of gsearch split by brand and nonbrand to find out if brand is picking up at all.
 
