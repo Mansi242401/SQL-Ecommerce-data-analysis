@@ -120,7 +120,7 @@ GROUP BY 1,2;
 
 It is clear from the above result that conversion rate is higher for desktop. However, the overal trend for both mobile and desktop is increasing over the 8 months period.
 
-5. Also, apart from gsearch show monthly trend for each of other website channels <br>
+4. Also, apart from gsearch show monthly trend for each of other website channels <br>
   For this one we would first need to find the various channels that can be used to reach the website
 **QUERY:**
 
@@ -174,7 +174,7 @@ GROUP BY 1,2;
 
 The paid sessions are obviously higher as compared to the unpaid search.
 
-7. find session to order conversion rate by month
-8. For gsearch lander test, please **estimate the revenue that test earned us**
-9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
-10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+5. find session to order conversion rate by month
+6. For gsearch lander test, please **estimate the revenue that test earned us**
+7. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+8. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
