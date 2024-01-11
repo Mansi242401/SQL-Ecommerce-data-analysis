@@ -176,6 +176,8 @@ The paid sessions are higher as compared to the unpaid search. However, they com
 
 5. find session to order conversion rate by month
 
+**QUERY:** <br>
+
 ```sql
 
 SELECT
@@ -192,6 +194,23 @@ WHERE website_sessions.created_at < '2012-11-27'
 GROUP BY 1,2;
 
 ```
+
+**Results:**
+
+
 7. For gsearch lander test, please **estimate the revenue that test earned us**
-8. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
-9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+
+```sql
+
+SELECT 
+MIN(website_pageview_id) as pageview_id,
+MIN(created_at)
+FROM 
+website_pageviews
+WHERE pageview_url = '/lander-1';
+
+-- the first pageview_id is 23504 and date is June 19,2012
+```
+
+9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
