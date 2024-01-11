@@ -172,9 +172,26 @@ GROUP BY 1,2;
 | 2012 | 10    | 5534                   | 1781                   | 440                      | 428                      |
 | 2012 | 11    | 8889                   | 2840                   | 485                      | 536                      |
 
-The paid sessions are obviously higher as compared to the unpaid search.
+The paid sessions are higher as compared to the unpaid search. However, they come with Customer Acquisition Cost (CAC) 
 
 5. find session to order conversion rate by month
-6. For gsearch lander test, please **estimate the revenue that test earned us**
-7. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
-8. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+
+```sql
+
+SELECT
+YEAR(website_sessions.created_at) AS yr,
+MONTH(website_sessions.created_at) AS mnth,
+COUNT(DISTINCT website_sessions.website_session_id) AS sessions,
+COUNT(DISTINCT orders.order_id) AS orders,
+COUNT(DISTINCT orders.order_id)/COUNT(DISTINCT website_sessions.website_session_id) AS conv_rate
+FROM 
+website_sessions
+LEFT JOIN orders
+ON website_sessions.website_session_id = orders.website_session_id
+WHERE website_sessions.created_at < '2012-11-27'
+GROUP BY 1,2;
+
+```
+7. For gsearch lander test, please **estimate the revenue that test earned us**
+8. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
