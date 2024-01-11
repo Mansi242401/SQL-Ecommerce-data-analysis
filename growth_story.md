@@ -78,7 +78,15 @@ Brand orders have also increased over time which is a good sign for its performa
 3. For gsearch nonbrand category, pull monthly sessions and orders split by device type.
 
 ```sql
+--First, we will find the distinct device type using below query
 
+SELECT
+distinct device_type
+FROM website_sessions;
+
+--The above query gives us results as 'desktop and mobile'
+-- Next, we will find out 
+SELECT
 YEAR(website_sessions.created_at) AS yr,
 MONTH(website_sessions.created_at) AS month,
 COUNT(CASE WHEN website_sessions.device_type = 'mobile' THEN website_sessions.website_session_id ELSE NULL END) as mobile_sessions,
@@ -112,8 +120,61 @@ GROUP BY 1,2;
 
 It is clear from the above result that conversion rate is higher for desktop. However, the overal trend for both mobile and desktop is increasing over the 8 months period.
 
-5. Also, apart from gsearch show monthly trend for each of other website channels
-6. find session to order conversion rate by month
-7. For gsearch lander test, please **estimate the revenue that test earned us**
-8. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
-9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+5. Also, apart from gsearch show monthly trend for each of other website channels <br>
+  For this one we would first need to find the various channels that can be used to reach the website
+**QUERY:**
+
+```sql
+
+SELECT
+DISTINCT utm_source as traffic source,
+utm_campaign as campaign,
+utm_content,
+http_referer
+FROM website_sessions
+WHERE created_at < '2012-11-27';
+
+-- From the above query, we learn that there are four categories of channels as under:
+-- 1. gsearch paid
+-- 2. bsearch paid
+-- 3. direct_type_in
+-- 4. organic_search
+
+-- Next we will find out the monthly trend for each of the above channels
+
+SELECT
+YEAR(website_sessions.created_at) AS yr,
+MONTH(website_sessions.created_at) AS month,
+COUNT(CASE WHEN website_sessions.utm_source = 'gsearch' THEN website_sessions.website_session_id ELSE NULL END) AS gsearch_paid_sessions,
+COUNT(CASE WHEN website_sessions.utm_source = 'bsearch' THEN website_sessions.website_session_id ELSE NULL END) AS bsearch_paid_sessions,
+COUNT(CASE WHEN website_sessions.utm_source IS NULL AND http_referer IS NULL THEN website_sessions.website_session_id ELSE NULL END) AS direct_type_in_sessions,
+COUNT(CASE WHEN website_sessions.utm_source IS NULL AND http_referer IS NOT NULL THEN website_sessions.website_session_id ELSE NULL END) AS organic_search_sessions
+FROM
+website_sessions
+LEFT JOIN orders
+ON website_sessions.website_session_id = orders.website_session_id
+WHERE 
+website_sessions.created_at < '2012-11-27'
+GROUP BY 1,2;
+
+```
+**Result:**
+
+| yr   | month | gsearch_paid_sessions | bsearch_paid_sessions | direct_type_in_sessions | organic_search_sessions |
+|------|-------|------------------------|------------------------|--------------------------|--------------------------|
+| 2012 | 3     | 1860                   | 2                      | 9                        | 8                        |
+| 2012 | 4     | 3574                   | 11                     | 71                       | 78                       |
+| 2012 | 5     | 3410                   | 25                     | 151                      | 150                      |
+| 2012 | 6     | 3578                   | 25                     | 170                      | 190                      |
+| 2012 | 7     | 3811                   | 44                     | 187                      | 207                      |
+| 2012 | 8     | 4877                   | 705                    | 250                      | 265                      |
+| 2012 | 9     | 4491                   | 1439                   | 285                      | 331                      |
+| 2012 | 10    | 5534                   | 1781                   | 440                      | 428                      |
+| 2012 | 11    | 8889                   | 2840                   | 485                      | 536                      |
+
+The paid sessions are obviously higher as compared to the unpaid search.
+
+7. find session to order conversion rate by month
+8. For gsearch lander test, please **estimate the revenue that test earned us**
+9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
