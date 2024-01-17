@@ -210,7 +210,7 @@ GROUP BY 1,2;
 | 2012 | 11   | 12750    | 561    | 0.0440    |
 
 
-7. For gsearch lander test, please **estimate the revenue that test earned us**
+6. For gsearch lander test, please **estimate the revenue that test earned us**
 
 ```sql
 
@@ -222,7 +222,217 @@ website_pageviews
 WHERE pageview_url = '/lander-1';
 
 -- the first pageview_id is 23504 and date is June 19,2012
+-- The below query would give us the first pageview id for each website_session. This is required to get the pageview_id of the landing page and we are filtering the same by date, first time the /lander-1 page was launched, gsearch and nonbrand category. We shall save the results in a temporary table named session_wise_first_pageview
+
+CREATE TEMPORARY TABLE session_wise_first_pageview
+SELECT website_pageviews.website_session_id,
+MIN(website_pageviews.website_pageview_id) AS min_pageview_id
+FROM
+website_pageviews
+INNER JOIN website_sessions
+ON website_pageviews.website_session_id = website_sessions.website_session_id
+AND website_sessions.created_at < '2012-07-28' -- based on the period for which the test was run
+AND website_pageviews.website_pageview_id > 23504
+AND utm_source = 'gsearch'
+AND utm_campaign = 'nonbrand'
+GROUP BY website_pageviews.website_session_id;
 ```
+**Result:**
+
+| Session ID | Pageview ID |
+|------------|-------------|
+| 11684      | 23505       |
+| 11685      | 23506       |
+| 11686      | 23507       |
+| 11687      | 23509       |
+| 11688      | 23510       |
+| 11689      | 23511       |
+| 11690      | 23514       |
+| 11691      | 23515       |
+| 11692      | 23517       |
+| 11693      | 23518       |
+| 11694      | 23521       |
+| 11696      | 23526       |
+| 11697      | 23527       |
+| 11698      | 23528       |
+| 11699      | 23529       |
+| 11700      | 23531       |
+
+The above data actually contains 4576 rows, however i have included only first few and last few rows due to limitation on uploading the entire data on github. 
+
+```sql
+
+-- next, we will get the urls for the above pageview ids limiting it to '/lander-1' and '/home' and save it in a temp table named 'test_session_with_landing_page'
+
+CREATE TEMPORARY TABLE test_session_with_landing_page
+SELECT 
+session_wise_first_pageview.website_session_id,
+website_pageviews.pageview_url as landing_page
+FROM 
+session_wise_first_pageview
+	LEFT JOIN website_pageviews
+    ON session_wise_first_pageview.min_pageview_id = website_pageviews.website_pageview_id
+    WHERE website_pageviews.pageview_url IN ('/home', '/lander-1');
+
+```
+
+**Result:**
+
+| website_session_id | landing_page |
+|--------------------|--------------|
+| 11684              | /home        |
+| 11685              | /lander-1    |
+| 11686              | /lander-1    |
+| 11687              | /home        |
+| 11688              | /home        |
+| 11689              | /lander-1    |
+| 11690              | /home        |
+| 11691              | /lander-1    |
+| 11692              | /lander-1    |
+| 11693              | /lander-1    |
+| 11694              | /lander-1    |
+| 11696              | /home        |
+| 11697              | /lander-1    |
+| 11698              | /lander-1    |
+| 11699              | /lander-1    |
+| 11700              | /home        |
+| 11701              | /lander-1    |
+| 11702              | /lander-1    |
+| 11704              | /lander-1    |
+| 11705              | /home        |
+| 11706              | /home        |
+| 11707              | /lander-1    |
+| 11708              | /lander-1    |
+| 11710              | /lander-1    |
+| 11711              | /lander-1    |
+| 11713              | /lander-1    |
+| 11714              | /lander-1    |
+| 11715              | /lander-1    |
+| 11716              | /home        |
+| 11717              | /home        |
+| 11718              | /lander-1    |
+| 11720              | /home        |
+| 11723              | /home        |
+| 16968              | /home        |
+| 16969              | /home        |
+| 16971              | /home        |
+| 16972              | /lander-1    |
+| 16974              | /home        |
+| 16975              | /home        |
+| 16977              | /lander-1    |
+| 16978              | /lander-1    |
+| 16979              | /lander-1    |
+| 16980              | /lander-1    |
+| 16981              | /lander-1    |
+| 16982              | /lander-1    |
+| 16983              | /home        |
+| 16984              | /home        |
+| 16985              | /home        |
+| 16986              | /lander-1    |
+| 16987              | /lander-1    |
+| 16988              | /lander-1    |
+| 16989              | /lander-1    |
+| 16990              | /home        |
+| 16991              | /lander-1    |
+
+The above result returned 4576 rows, however I have restricted it to only first few and last few rows.
+
+```sql
+
+-- next we will get the order_ids for these pageview urls and save it in a temp table named 'test_session_with_orders'
+
+CREATE TEMPORARY TABLE test_session_with_orders
+SELECT 
+session_wise_first_pageview.website_session_id,
+website_pageviews.pageview_url as landing_page
+FROM 
+session_wise_first_pageview
+	LEFT JOIN website_pageviews
+    ON session_wise_first_pageview.min_pageview_id = website_pageviews.website_pageview_id
+    WHERE website_pageviews.pageview_url IN ('/home', '/lander-1');
+
+```
+
+**Result:**
+
+| website_session_id | landing_page | order_id |
+|--------------------|--------------|----------|
+| 11684              | /home        | NULL     |
+| 11685              | /lander-1    | NULL     |
+| 11686              | /lander-1    | NULL     |
+| 11687              | /home        | NULL     |
+| 11688              | /home        | NULL     |
+| 11689              | /lander-1    | NULL     |
+| 11690              | /home        | NULL     |
+| 11691              | /lander-1    | NULL     |
+| 11692              | /lander-1    | NULL     |
+| 11693              | /lander-1    | NULL     |
+| 11694              | /lander-1    | NULL     |
+| 11696              | /home        | NULL     |
+| 11697              | /lander-1    | NULL     |
+| 11698              | /lander-1    | NULL     |
+| 11699              | /lander-1    | NULL     |
+| 11700              | /home        | NULL     |
+| 11701              | /lander-1    | NULL     |
+| 11702              | /lander-1    | NULL     |
+| 11704              | /lander-1    | NULL     |
+| 11705              | /home        | NULL     |
+| 11706              | /home        | NULL     |
+| 11707              | /lander-1    | NULL     |
+| 11708              | /lander-1    | NULL     |
+| 11710              | /lander-1    | NULL     |
+| 11711              | /lander-1    | NULL     |
+| 11713              | /lander-1    | NULL     |
+| 11714              | /lander-1    | NULL     |
+| 11715              | /lander-1    | NULL     |
+| 11716              | /home        | NULL     |
+| 11717              | /home        | NULL     |
+| 11718              | /lander-1    | NULL     |
+| 11720              | /home        | NULL     |
+| 11723              | /home        | NULL     |
+| 11724              | /lander-1    | NULL     |
+| 11725              | /lander-1    | NULL     |
+| 11727              | /home        | NULL     |
+| 11728              | /home        | NULL     |
+| 11729              | /lander-1    | 350      |
+| 11730              | /home        | NULL     |
+| 11731              | /home        | NULL     |
+| 11732              | /lander-1    | NULL     |
+| 16958              | /home        | NULL     |
+| 16959              | /lander-1    | NULL     |
+| 16960              | /lander-1    | NULL     |
+| 16961              | /home        | NULL     |
+| 16962              | /home        | NULL     |
+| 16964              | /home        | NULL     |
+| 16965              | /home        | NULL     |
+| 16967              | /home        | NULL     |
+| 16968              | /home        | NULL     |
+| 16969              | /home        | NULL     |
+| 16971              | /home        | 557      |
+| 16972              | /lander-1    | NULL     |
+| 16974              | /home        | NULL     |
+| 16975              | /home        | NULL     |
+| 16977              | /lander-1    | NULL     |
+| 16978              | /lander-1    | NULL     |
+| 16979              | /lander-1    | NULL     |
+| 16980              | /lander-1    | NULL     |
+| 16981              | /lander-1    | NULL     |
+| 16982              | /lander-1    | NULL     |
+| 16983              | /home        | NULL     |
+| 16984              | /home        | NULL     |
+| 16985              | /home        | NULL     |
+| 16986              | /lander-1    | NULL     |
+| 16987              | /lander-1    | NULL     |
+| 16988              | /lander-1    | NULL     |
+| 16989              | /lander-1    | NULL     |
+| 16990              | /home        | NULL     |
+| 16991              | /lander-1    | NULL     |
+
+The above result returned 4576 rows, however I have restricted it to only first few and last few rows.
+
+```sql
+
+
 
 9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
 10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
