@@ -431,8 +431,40 @@ session_wise_first_pageview
 The above result returned 4576 rows, however I have restricted it to only first few and last few rows.
 
 ```sql
+-- next we will find the conversion rate for each /home and /lander-1 page to orders
 
+SELECT 
+landing_page,
+COUNT(DISTINCT website_session_id) AS sessions,
+COUNT(DISTINCT order_id) AS orders,
+COUNT(DISTINCT order_id)/COUNT(DISTINCT website_session_id) AS conversion_rate
+FROM
+test_session_with_orders
+GROUP BY 1;
 
+```
+**Result** <br>
+
+| landing_page | sessions | orders | conversion_rate |
+|--------------|----------|--------|------------------|
+| /home        | 2261     | 72     | 0.0318           |
+| /lander-1    | 2315     | 94     | 0.0406           |
+
+```sql
+-- find the most recent pageview id for gsearch nonbrand category where traffic was sent to '/home'
+SELECT 
+MAX(website_pageviews.website_session_id) AS recent_home_p_id
+FROM
+website_sessions
+LEFT JOIN website_pageviews
+ON website_sessions.website_session_id = website_pageviews.website_session_id
+WHERE website_sessions.utm_source = 'gsearch'
+AND website_sessions.utm_campaign = 'nonbrand'
+AND website_pageviews.pageview_url = '/home'
+AND website_sessions.created_at < '2012-11-27';
+
+-- the most recent pageview_id for /home page in gsearch nonbrand category is 17145
+```
 
 9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
 10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
