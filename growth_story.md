@@ -450,10 +450,13 @@ GROUP BY 1;
 | /home        | 2261     | 72     | 0.0318           |
 | /lander-1    | 2315     | 94     | 0.0406           |
 
+CTR for /home is 0.0318 and /lander-1 is 0.0406. The difference bw these two landing pages is .0088
+
 ```sql
+
 -- find the most recent pageview id for gsearch nonbrand category where traffic was sent to '/home'
 SELECT 
-MAX(website_pageviews.website_session_id) AS recent_home_p_id
+MAX(website_pageviews.website_session_id) AS recent_home_ws_id
 FROM
 website_sessions
 LEFT JOIN website_pageviews
@@ -463,8 +466,22 @@ AND website_sessions.utm_campaign = 'nonbrand'
 AND website_pageviews.pageview_url = '/home'
 AND website_sessions.created_at < '2012-11-27';
 
--- the most recent pageview_id for /home page in gsearch nonbrand category is 17145
+-- the most recent website_session_id for /home page in gsearch nonbrand category is 17145
+-- next, we find the total sessions after the last test
+
+SELECT 
+COUNT(website_session_id)
+FROM website_sessions
+WHERE created_at < '2012-11-27'
+AND website_session_id > 17145
+AND utm_source = 'gsearch'
+AND utm_campaign = 'nonbrand';
+
+-- There are total 22972 website sessions after the test. When we multiply the same by 0.0088 to get incremental conversion 
+-- 22927 X .0088 = 201.76 since July 29,2012. From August 2012 to November 2012 (4 months), there are 202 extra orders i.e. 50 orders per month.
+
 ```
 
-9. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
-10. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+7. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+
+8. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
