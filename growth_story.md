@@ -483,5 +483,35 @@ AND utm_campaign = 'nonbrand';
 ```
 
 7. for landing page test, show **full conversion funnel from each of the two pages to orders** (from june 19 to July 28)
+For this part, we will first understand what are the pages for each funnel stage.
 
-8. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+a. Landing Page ('/lander-1' and '/home'):
+The journey begins on the homepage, where users explore a variety of products and get a sense of what the ecommerce platform has to offer. 
+For this problem we are using two landing pages - '/lander-1' and '/home'. 
+
+b. Product Listings (/products):
+From landing page, Users navigate to the product listings, where they can browse through different categories, view product details, and find items of interest.
+
+c. Product Details (/the-original-mr-fuzzy):
+Upon finding a specific product, users click to view more details, including images, specifications, and customer reviews.
+
+d. Shopping Cart (/cart):
+The chosen products are added to the shopping cart, creating a virtual basket that holds the selected items for purchase.
+
+e. Shipping Information (/shipping):
+Users proceed to enter shipping information, providing details such as delivery address and preferred shipping method.
+
+f. Billing Details (/billing):
+Next, users enter billing information, ensuring a smooth and secure transaction process.
+
+g. Order Confirmation (/thankyou-for-your-order):
+The final stage involves a confirmation page, expressing gratitude for the order and providing essential details such as order number and estimated delivery date.
+
+```sql
+
+SELECT
+
+
+```
+
+9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
