@@ -509,9 +509,28 @@ The final stage involves a confirmation page, expressing gratitude for the order
 
 ```sql
 
-SELECT
-
+SELECT 
+CASE WHEN homepage_seen = 1 THEN 'homepage_seen'
+WHEN lander1_seen = 1 THEN 'lander-1_seen'
+ELSE 'oh.. wrong logic'
+END AS landing_segment,
+COUNT(DISTINCT CASE WHEN products_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT website_session_id) AS landing_CTR,
+COUNT(DISTINCT CASE WHEN fuzzy_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN products_seen = 1 THEN website_session_id ELSE NULL END) AS products_CTR,
+COUNT(DISTINCT CASE WHEN cart_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN fuzzy_seen = 1 THEN website_session_id ELSE NULL END) AS fuzzy_CTR,
+COUNT(DISTINCT CASE WHEN shipping_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN cart_seen = 1 THEN website_session_id ELSE NULL END) AS cart_CTR,
+COUNT(DISTINCT CASE WHEN billing_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN shipping_seen = 1 THEN website_session_id ELSE NULL END) AS shipping_CTR,
+COUNT(DISTINCT CASE WHEN thankyou_seen = 1 THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN billing_seen = 1 THEN website_session_id ELSE NULL END) AS billing_CTR
+FROM flagged_session_stage
+GROUP BY 1;
 
 ```
+
+**Result:**
+
+| Landing_segment | landing_CTR | products_CTR | fuzzy_CTR | cart_CTR | shipping_CTR | billing_CTR |
+|----------------|-------------|--------------|-----------|----------|--------------|-------------|
+| homepage_seen  | 0.4166      | 0.7261       | 0.4327    | 0.6757   | 0.8400       | 0.4286      |
+| lander-1_seen  | 0.4676      | 0.7128       | 0.4508    | 0.6638   | 0.8528       | 0.4772      |
+
 
 9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
