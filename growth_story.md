@@ -12,7 +12,7 @@ Based on the CEO's request, we shall follow the following approach :
 
 ## Summarized Findings 
 
-The results indicate increasing conversion rates over time, higher conversion rates for desktop sessions compared to mobile sessions, and a significant lift in revenue per billing page session due to the billing test. The overall impact of the new billing page for the last month was estimated at $10,152.43.
+The results indicate increasing conversion rates over time, higher conversion rates for desktop sessions compared to mobile sessions, increasing brand orders and a significant lift in revenue per billing page session due to the billing test. The overall impact of the new billing page for the last month was estimated at $10,152.43.
    
 ## CEO's Request on Nov 27, 2012
 
