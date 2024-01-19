@@ -557,3 +557,9 @@ AND website_pageviews.created_at > '2012-09-10' AND website_pageviews.created_at
 GROUP BY 1;
 
 ```
+| billing_version_seen | sessions | revenue_per_billing_page_seen |
+|-----------------------|----------|-------------------------------|
+| /billing              | 657      | 22.826484                     |
+| /billing-2            | 654      | 31.339297                     |
+
+There is a major lift in the revenue_per_billing from USD 23 to USD 31 from old billing to the new billing page.
