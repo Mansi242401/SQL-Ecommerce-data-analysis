@@ -576,10 +576,14 @@ There is a major lift in the revenue_per_billing from USD 22.83 to USD 31.34 fro
 
 -- next we find out the billing sessions in the last month and its impact
 
+```sql
+
 SELECT COUNT(website_session_id) AS billing_sessions_past_month
 FROM website_pageviews 
 WHERE website_pageviews.pageview_url IN ('/billing', '/billing-2')
 AND created_at BETWEEN '2012-10-27' AND '2012-11-27'; -- past month
+
+```
 
 **Result** <br>
 
