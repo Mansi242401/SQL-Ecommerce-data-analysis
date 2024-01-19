@@ -535,7 +535,7 @@ GROUP BY 1;
 | lander-1_seen  | 0.4676      | 0.7128       | 0.4508    | 0.6638   | 0.8528       | 0.4772      |
 
 
-9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+8. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
 
 ```sql
 
