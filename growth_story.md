@@ -536,3 +536,24 @@ GROUP BY 1;
 
 
 9. Quantify the impact of billing test. Analyze lift generated from the billing test(Sep 10 - Nov 10), in terms of **revenue per billing page session**, and then pull the billing page sessions for the past month to understand monthly impact.
+
+```sql
+
+SELECT
+billing_version_seen,
+COUNT(DISTINCT website_session_id) AS sessions,
+SUM(price_usd)/COUNT(DISTINCT website_session_id) AS revenue_per_billing_page_seen
+FROM
+(SELECT website_pageviews.website_session_id,
+website_pageviews.pageview_url as billing_version_seen,
+orders.order_id,
+orders.price_usd
+FROM website_pageviews
+LEFT JOIN orders 
+ON website_pageviews.website_session_id = orders.website_session_id
+WHERE website_pageviews.pageview_url IN ('/billing','/billing-2') 
+AND website_pageviews.created_at > '2012-09-10' AND website_pageviews.created_at < '2012-11-10'
+) AS billing_pageviews_order_data
+GROUP BY 1;
+
+```
