@@ -507,6 +507,8 @@ Next, users enter billing information, ensuring a smooth and secure transaction 
 g. Order Confirmation (/thankyou-for-your-order):
 The final stage involves a confirmation page, expressing gratitude for the order and providing essential details such as order number and estimated delivery date.
 
+Then, we calculate the CTR for each of the above webpages.
+
 ```sql
 
 SELECT 
