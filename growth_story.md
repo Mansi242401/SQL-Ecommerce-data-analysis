@@ -3,14 +3,14 @@
 
 The website has been live for 8 months, and CEO wants to present the company's performance metrics to the board, hence metrics need to be created showing how the company is growing and how that growth is being generated.
 
-# Proposed Solution
+## Proposed Solution
 Based on the CEO's request, we shall follow the following approach :
 1. We will be presenting monthly trends for all website channels and orders
 2. Next, we will show the orders earned from landing page test
 3. Then, we show the conversion funnel from two landing pages to orders
 4. Then, we analyze the impact of billing test in terms of revenue per billing page session.
 
-# Summarized Findings 
+## Summarized Findings 
 
 The results indicate increasing conversion rates over time, higher conversion rates for desktop sessions compared to mobile sessions, and a significant lift in revenue per billing page session due to the billing test. The overall impact of the new billing page for the last month was estimated at $10,152.43.
    
