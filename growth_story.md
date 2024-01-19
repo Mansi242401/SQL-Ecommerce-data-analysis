@@ -562,4 +562,18 @@ GROUP BY 1;
 | /billing              | 657      | 22.826484                     |
 | /billing-2            | 654      | 31.339297                     |
 
-There is a major lift in the revenue_per_billing from USD 23 to USD 31 from old billing to the new billing page which approx USD 8 lift.
+There is a major lift in the revenue_per_billing from USD 22.83 to USD 31.34 from old billing to the new billing page which approx USD 8.51 lift.
+
+-- next we find out the billing sessions in the last month and its impact
+
+SELECT COUNT(website_session_id) AS billing_sessions_past_month
+FROM website_pageviews 
+WHERE website_pageviews.pageview_url IN ('/billing', '/billing-2')
+AND created_at BETWEEN '2012-10-27' AND '2012-11-27'; -- past month
+
+**Result** <br>
+
+There are total 1193 sessions in the past one month and we know that each session has increased the revenues by USD 8 with the new billing page. Hence, overall impact of the new billing page is USD 1193 X 8.51 i.e. USD 10152.43 for the last month.
+
+
+
