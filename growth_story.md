@@ -3,6 +3,17 @@
 
 The website has been live for 8 months, and CEO wants to present the company's performance metrics to the board, hence metrics need to be created showing how to company is growing and how that growth is being generated.
 
+# Proposed Solution
+Based on the CEO's request, we shall follow the following approach :
+1. We will be presenting monthly trends for all website channels and orders
+2. Next, we will show the orders earned from landing page test
+3. Then, we show the conversion funnel from two landing pages to orders
+4. Then, we analyze the impact of billing test in terms of revenue per billing page session.
+
+# Summarized Findings 
+
+The results from the queries show a growing conversion rate for gsearch sessions and orders over time. The monthly trend of gsearch split by brand and nonbrand indicates an increase in brand orders. Additionally, the impact of the billing test resulted in a significant lift in revenue per billing page session. The analysis of the conversion funnel also provides insights into the click-through rates for different stages of the checkout process.
+   
 ## CEO's Request on Nov 27, 2012
 
 From previous results, it is clear that majority traffic is coming from gsearch source. 
@@ -194,7 +205,6 @@ WHERE website_sessions.created_at < '2012-11-27'
 GROUP BY 1,2;
 
 ```
-
 **Results:**
 
 | yr   | mnth | sessions | orders | conv_rate |
@@ -210,7 +220,7 @@ GROUP BY 1,2;
 | 2012 | 11   | 12750    | 561    | 0.0440    |
 
 
-6. For gsearch lander test, please **estimate the revenue that test earned us**
+6. For gsearch lander test, please **estimate the orders that test earned us**
 
 ```sql
 
@@ -478,7 +488,7 @@ AND utm_source = 'gsearch'
 AND utm_campaign = 'nonbrand';
 
 -- There are total 22972 website sessions after the test. When we multiply the same by 0.0088 to get incremental conversion 
--- 22927 X .0088 = 201.76 since July 29,2012. From August 2012 to November 2012 (4 months), there are 202 extra orders i.e. 50 orders per month.
+-- 22927 X .0088 = 201.76 since July 29,2012. From August 2012 to November 2012 (4 months), there are 202 extra orders i.e. 50 orders per month.The test earned us 50 extra orders per month.
 
 ```
 
