@@ -562,4 +562,4 @@ GROUP BY 1;
 | /billing              | 657      | 22.826484                     |
 | /billing-2            | 654      | 31.339297                     |
 
-There is a major lift in the revenue_per_billing from USD 23 to USD 31 from old billing to the new billing page.
+There is a major lift in the revenue_per_billing from USD 23 to USD 31 from old billing to the new billing page which approx USD 8 lift.
