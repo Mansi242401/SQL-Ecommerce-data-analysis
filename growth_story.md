@@ -12,7 +12,7 @@ Based on the CEO's request, we shall follow the following approach :
 
 # Summarized Findings 
 
-The results from the queries show a growing conversion rate for gsearch sessions and orders over time. The monthly trend of gsearch split by brand and nonbrand indicates an increase in brand orders. Additionally, the impact of the billing test resulted in a significant lift in revenue per billing page session. The analysis of the conversion funnel also provides insights into the click-through rates for different stages of the checkout process.
+The results indicate increasing conversion rates over time, higher conversion rates for desktop sessions compared to mobile sessions, and a significant lift in revenue per billing page session due to the billing test. The overall impact of the new billing page for the last month was estimated at $10,152.43.
    
 ## CEO's Request on Nov 27, 2012
 
