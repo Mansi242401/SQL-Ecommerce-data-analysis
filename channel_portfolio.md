@@ -82,11 +82,11 @@ GROUP BY 1;
 clearly gsearch moble traffic is higher.
    
 
-3. By: Marketing Director
+3. By: Marketing Director <br>
    Date: Dec 1, 2012
 
-   I am wondering if bsearch nonbrand should have the same bids as gsearch. Could you pull **nonbrand conversion rates from sessions to orders for both gsearch and bsearch and slice the data by device type**.
-   Please analyze data from aug 22 to Sep 18. We ran a special pre-holiday campaign for gsearch starting on september 19, so the data after that is not a fair game.
+I am wondering if bsearch nonbrand should have the same bids as gsearch. Could you pull **nonbrand conversion rates from sessions to orders for both gsearch and bsearch and slice the data by device type**. <br>
+Please analyze data from aug 22 to Sep 18. We ran a special pre-holiday campaign for gsearch starting on september 19, so the data after that is not a fair game.
 
 ```sql
 
