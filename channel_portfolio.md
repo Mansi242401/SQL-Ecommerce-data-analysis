@@ -62,11 +62,11 @@ GROUP BY YEARWEEK(created_at);
    **aggregate data from Aug 22, 2012 is good** No trending data is required at this point.
 
    ```sql
-  SELECT
+SELECT
 utm_source,
-COUNT(website_session_id) as total_sessions,
-COUNT(CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END) AS mobile_sessions,
-COUNT(CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END)/COUNT(website_session_id) AS pct_mobile
+COUNT(DISTINCT website_session_id) as total_sessions,
+COUNT(DISTINCT CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END) AS mobile_sessions,
+COUNT(DISTINCT CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END)/COUNT(DISTINCT website_session_id) AS pct_mobile
 FROM website_sessions
 WHERE created_at BETWEEN '2012-08-22' AND '2012-11-30'
 AND utm_campaign = 'nonbrand'
