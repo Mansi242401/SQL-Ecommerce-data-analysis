@@ -14,8 +14,8 @@ which types of device they used during the session(mobile or desktop)
 
 ## Stakeholder requests
 
-1. By : Marketng Director
-   Date : Nov 29,2012
+1. By : Marketing Director
+   Date : Nov 29, 2012
 
 With gsearch doing well and site performing better, **we launched a second paid search channel - bsearch** around August 22 can you pull weekly trended session volume since then and compare it to gsearch nonbrand so that we can understand how important it will be for the business
 
@@ -55,6 +55,33 @@ GROUP BY YEARWEEK(created_at);
 | 2012-11-25        | 2286             | 774              |
 
 
-2. 
+2. By: Marketing Director
+   Date : Nov 30, 2012
+
+   I would like to learn more about the **bsearch nonbrand** campaign. Could you pull **percentage of traffic coming on mobile** and **compare that to gsearch**
+   **aggregate data from Aug 22, 2012 is good** No trending data is required at this point.
+
+   ```sql
+  SELECT
+utm_source,
+COUNT(website_session_id) as total_sessions,
+COUNT(CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END) AS mobile_sessions,
+COUNT(CASE WHEN device_type = 'mobile' THEN website_session_id ELSE NULL END)/COUNT(website_session_id) AS pct_mobile
+FROM website_sessions
+WHERE created_at BETWEEN '2012-08-22' AND '2012-11-30'
+AND utm_campaign = 'nonbrand'
+GROUP BY 1;
+
+   ```
+**Results:**
+
+| utm_source | total_sessions | mobile_sessions | pct_mobile |
+|------------|-----------------|------------------|------------|
+| gsearch    | 20073           | 4921             | 0.2452     |
+| bsearch    | 6522            | 562              | 0.0862     |
+
+25% of the the total sessions are coming from mobile sessions for gsearch nonbrand segment and only 8.6 % is routing from mobile for bsearch nonbrand segment.
+clearly gsearch moble traffic is higher.
+   
 
 
