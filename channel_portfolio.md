@@ -17,10 +17,9 @@ which types of device they used during the session(mobile or desktop)
 1. By : Marketing Director
    Date : Nov 29, 2012
 
-With gsearch doing well and site performing better, **we launched a second paid search channel - bsearch** around August 22 can you pull weekly trended session volume since then and compare it to gsearch nonbrand so that we can understand how important it will be for the business
+With gsearch doing well and site performing better, **we launched a second paid search channel - bsearch** around August 22 can you pull weekly trended session volume since then and compare it to gsearch nonbrand so that we can understand how important it will be for the business <br>
 
-
-   ```sql
+```sql
    
    SELECT 
 MIN(DATE(created_at)) AS first_day_of_week,
@@ -31,8 +30,7 @@ WHERE created_at BETWEEN '2012-08-22' AND '2012-11-29'
 AND utm_campaign = 'nonbrand'
 GROUP BY YEARWEEK(created_at);
 
-   ```
-
+```
 
 **Results:**
 
