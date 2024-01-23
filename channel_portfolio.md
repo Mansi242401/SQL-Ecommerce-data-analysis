@@ -82,4 +82,33 @@ GROUP BY 1;
 clearly gsearch moble traffic is higher.
    
 
+3. By: Marketing Director
+   Date: Dec 1, 2012
+
+   I am wondering if bsearch nonbrand should have the same bids as gsearch. Could you pull **nonbrand conversion rates from sessions to orders for both gsearch and bsearch and slice the data by device type**.
+   Please analyze data from aug 22 to Sep 18. We ran a special pre-holiday campaign for gsearch starting on september 19, so the data after that is not a fair game.
+
+```sql
+
+-- the very first thing to do here would be to find what are the different device types using the below query :
+
+SELECT DISTINCT device_type FROM website_sessions;
+
+-- above query returns -'mobile' and 'desktop'
+
+-- next we will find the total session for nonbrand gsearch and bsearch and further break it by device type
+
+SELECT
+website_sessions.utm_source,
+website_sessions.device_type,
+COUNT(DISTINCT website_sessions.website_session_id) as total_sessions,
+COUNT(DISTINCT orders.order_id) as total_orders,
+COUNT(DISTINCT orders.order_id)/COUNT(DISTINCT website_sessions.website_session_id) as cnv_rate
+FROM website_sessions
+LEFT JOIN orders ON website_sessions.website_session_id = orders.website_session_id
+WHERE website_sessions.created_at BETWEEN '2012-08-22' AND '2012-09-18'
+AND website_sessions.utm_campaign = 'nonbrand'
+GROUP BY 1,2;
+
+```
 
