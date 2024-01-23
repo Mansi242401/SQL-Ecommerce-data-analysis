@@ -14,7 +14,7 @@ which types of device they used during the session(mobile or desktop)
 
 ## Stakeholder requests
 
-1. By : Marketing Director
+1. By : Marketing Director <br>
    Date : Nov 29, 2012
 
 With gsearch doing well and site performing better, **we launched a second paid search channel - bsearch** around August 22 can you pull weekly trended session volume since then and compare it to gsearch nonbrand so that we can understand how important it will be for the business <br>
@@ -32,7 +32,7 @@ GROUP BY YEARWEEK(created_at);
 
 ```
 
-**Results:**
+**Results:** <br>
 
 | first_day_of_week | gsearch_sessions | bsearch_sessions |
 |-------------------|------------------|------------------|
@@ -53,7 +53,7 @@ GROUP BY YEARWEEK(created_at);
 | 2012-11-25        | 2286             | 774              |
 
 
-2. By: Marketing Director
+2. By: Marketing Director <br>
    Date : Nov 30, 2012
 
 I would like to learn more about the **bsearch nonbrand** campaign. Could you pull **percentage of traffic coming on mobile** and **compare that to gsearch. Aggregate data from Aug 22, 2012 is good** No trending data is required at this point.
