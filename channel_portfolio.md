@@ -56,10 +56,10 @@ GROUP BY YEARWEEK(created_at);
 2. By: Marketing Director
    Date : Nov 30, 2012
 
-   I would like to learn more about the **bsearch nonbrand** campaign. Could you pull **percentage of traffic coming on mobile** and **compare that to gsearch**
-   **aggregate data from Aug 22, 2012 is good** No trending data is required at this point.
+I would like to learn more about the **bsearch nonbrand** campaign. Could you pull **percentage of traffic coming on mobile** and **compare that to gsearch. Aggregate data from Aug 22, 2012 is good** No trending data is required at this point.
 
-   ```sql
+```sql
+
 SELECT
 utm_source,
 COUNT(DISTINCT website_session_id) as total_sessions,
