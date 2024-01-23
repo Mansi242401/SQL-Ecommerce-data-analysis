@@ -112,3 +112,20 @@ GROUP BY 1,2;
 
 ```
 
+**Result:**
+
+| utm_source | device_type | total_sessions | total_orders | cnv_rate |
+|------------|-------------|-----------------|--------------|----------|
+| bsearch    | desktop     | 1162            | 44           | 0.0379   |
+| bsearch    | mobile      | 130             | 1            | 0.0077   |
+| gsearch    | desktop     | 3011            | 136          | 0.0452   |
+| gsearch    | mobile      | 1015            | 13           | 0.0128   |
+
+**Marketing Director's Response:**
+
+As i suspected, the channels don't perform identically so we should **differentiate our bids** in order to optimize our overall paid marketing budget.
+**I will bid down bsearch based on its underperformance.**
+
+
+
+
