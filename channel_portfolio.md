@@ -156,7 +156,6 @@ GROUP BY YEARWEEK(created_at);
 **Results:**
 
 
-
 | first_day_of_wk | gsearch_desktop_sessions | gsearch_mobile_sessions | bsearch_desktop_sessions | bsearch_mobile_sessions | bsearch_perc_desktop | bsearch_perc_mobile |
 |------------------|--------------------------|--------------------------|---------------------------|--------------------------|-----------------------|-----------------------|
 | 2012-11-04       | 1027                     | 323                      | 400                       | 29                       | 0.3895                | 0.0898                |
@@ -168,5 +167,11 @@ GROUP BY YEARWEEK(created_at);
 | 2012-12-16       | 1270                     | 376                      | 348                       | 41                       | 0.2740                | 0.1090                |
 
 
+From the above results, it is clear that bsearch as percentage of gsearch is much lower for mobile as compared to desktop. For desktop, the percentage has lowered post black friday week i.e. dec 2, 2012.
+
+**Stakeholder's response**
+
+Looks like **bsearch traffic dropped off a bit after the bid down**. Seems like gsearch was down too far after Black Friday and Cyber Monday. but bsearch dropped even more.
+I think it is okay given the low conversion rate.
 
 
