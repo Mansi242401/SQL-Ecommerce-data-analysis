@@ -121,10 +121,36 @@ GROUP BY 1,2;
 | gsearch    | desktop     | 3011            | 136          | 0.0452   |
 | gsearch    | mobile      | 1015            | 13           | 0.0128   |
 
+we can see from the above results that conversion rates are higher for gsearch in both mobile and dekstop category as compared to bsearch. Hence, the ad spend on bsearch is not that effective as compared to gsearch. After sharing the above results with the Marketing Director, we get following response.
+
 **Marketing Director's Response:**
 
 As i suspected, the channels don't perform identically so we should **differentiate our bids** in order to optimize our overall paid marketing budget.
 **I will bid down bsearch based on its underperformance.**
+
+4. By: Marketing Director <br>
+   Date: Decemeber 22, 2012 <br>
+   Based on your last analysis, we bid down bsearch nonbrand on December 2.
+
+   Can you pull weekly session volume for gsearch and bsearch nonbrand, broken down by device, since Nov 4th?
+   If you can include a comparison metric to show bsearch as a percentage of gsearch for each device, that would be great too.
+
+   ```sql
+   
+SELECT 
+MIN(DATE(created_at)) as first_day_of_wk,
+COUNT(DISTINCT CASE WHEN utm_source = 'gsearch' AND device_type = 'desktop' THEN website_session_id ELSE NULL END) AS gsearch_desktop_sessions,
+COUNT(DISTINCT CASE WHEN utm_source = 'gsearch' AND device_type = 'mobile' THEN website_session_id ELSE NULL END) AS gsearch_mobile_sessions,
+COUNT(DISTINCT CASE WHEN utm_source = 'bsearch' AND device_type = 'desktop' THEN website_session_id ELSE NULL END) AS bsearch_desktop_sessions,
+COUNT(DISTINCT CASE WHEN utm_source = 'bsearch' AND device_type = 'mobile' THEN website_session_id ELSE NULL END) AS bsearch_mobile_sessions,
+COUNT(DISTINCT CASE WHEN utm_source = 'bsearch' AND device_type = 'desktop' THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN utm_source = 'gsearch' AND device_type = 'desktop' THEN website_session_id ELSE NULL END) AS bsearch_perc_desktop,
+COUNT(DISTINCT CASE WHEN utm_source = 'bsearch' AND device_type = 'mobile' THEN website_session_id ELSE NULL END)/COUNT(DISTINCT CASE WHEN utm_source = 'gsearch' AND device_type = 'mobile' THEN website_session_id ELSE NULL END) AS bsearch_perc_mobile
+FROM website_sessions
+WHERE utm_campaign = 'nonbrand'
+AND created_at BETWEEN '2012-11-04' AND '2012-12-23'
+GROUP BY YEARWEEK(created_at);
+
+   ```
 
 
 
