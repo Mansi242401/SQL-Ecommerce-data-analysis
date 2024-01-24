@@ -130,12 +130,14 @@ As i suspected, the channels don't perform identically so we should **differenti
 
 4. By: Marketing Director <br>
    Date: Decemeber 22, 2012 <br>
+   
    Based on your last analysis, we bid down bsearch nonbrand on December 2.
 
    Can you pull weekly session volume for gsearch and bsearch nonbrand, broken down by device, since Nov 4th?
    If you can include a comparison metric to show bsearch as a percentage of gsearch for each device, that would be great too.
 
-   ```sql
+
+```sql
    
 SELECT 
 MIN(DATE(created_at)) as first_day_of_wk,
@@ -150,7 +152,7 @@ WHERE utm_campaign = 'nonbrand'
 AND created_at BETWEEN '2012-11-04' AND '2012-12-23'
 GROUP BY YEARWEEK(created_at);
 
-   ```
+```
 
 
 
