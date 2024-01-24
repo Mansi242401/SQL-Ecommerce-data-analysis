@@ -26,4 +26,16 @@ Direct traffic can also be influenced by promotions, discounts, or specific camp
 
 To leverage direct traffic effectively, e-commerce businesses often use web analytics tools to track and analyze user behavior. This helps in making informed decisions about marketing strategies, user experience improvements, and overall brand management.
 
-From our data, to find direct traffic first we will put `utm_source` in `website_sessions` table as `NULL`, because anything with a value in utm_source gives us paid traffic.
+From our data, to find direct traffic :
+
+1. We will put `utm_source` in `website_sessions` table as `NULL`, because anything with a value in `utm_source` gives us paid traffic.
+2. For `http_referer`, if we see that it has `NULL` value, then it is a direct type-in i.e. users are directly typing our website in browser. If it is not NULL, we can call it an organic search.In the context of e-commerce, organic search is crucial for attracting potential customers who are actively searching for products or information related to the business.
+Let's write queries to pull this data
+
+```sql
+
+SELECT * FROM wesbite_sessions
+WHERE utm_source is NULL
+AND
+
+```
