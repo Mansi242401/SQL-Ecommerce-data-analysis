@@ -26,4 +26,4 @@ Direct traffic can also be influenced by promotions, discounts, or specific camp
 
 To leverage direct traffic effectively, e-commerce businesses often use web analytics tools to track and analyze user behavior. This helps in making informed decisions about marketing strategies, user experience improvements, and overall brand management.
 
-From our data, to find direct traffic first we will put utm_source in website_sessions table as NULL, because anything with a value in utm_source gives us paid traffic.
+From our data, to find direct traffic first we will put `utm_source` in `website_sessions` table as `NULL`, because anything with a value in utm_source gives us paid traffic.
