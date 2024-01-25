@@ -68,4 +68,26 @@ GROUP BY 1,2;
 
 ```
 
+**Results:**
+
+| yr   | mnth | brand | nonbrand | brand_prc_of_nonbrand | direct | direct_perc_of_nonbrand | organic | organic_perc_of_nonbrand |
+|------|------|-------|----------|-----------------------|--------|--------------------------|---------|---------------------------|
+| 2012 | 3    | 10    | 1852     | 0.0054                | 9      | 0.0049                   | 8       | 0.0043                    |
+| 2012 | 4    | 76    | 3509     | 0.0217                | 71     | 0.0202                   | 78      | 0.0222                    |
+| 2012 | 5    | 140   | 3295     | 0.0425                | 151    | 0.0458                   | 150     | 0.0455                    |
+| 2012 | 6    | 164   | 3439     | 0.0477                | 170    | 0.0494                   | 190     | 0.0552                    |
+| 2012 | 7    | 195   | 3660     | 0.0533                | 187    | 0.0511                   | 207     | 0.0566                    |
+| 2012 | 8    | 264   | 5318     | 0.0496                | 250    | 0.0470                   | 265     | 0.0498                    |
+| 2012 | 9    | 339   | 5591     | 0.0606                | 285    | 0.0510                   | 331     | 0.0592                    |
+| 2012 | 10   | 432   | 6883     | 0.0628                | 440    | 0.0639                   | 428     | 0.0622                    |
+| 2012 | 11   | 556   | 12260    | 0.0454                | 571    | 0.0466                   | 624     | 0.0509                    |
+| 2012 | 12   | 464   | 6643     | 0.0698                | 482    | 0.0726                   | 492     | 0.0741                    |
+
+It can be observed that brand, organic and direct search are growing and also as a percentage of nonbrand.
+
+**CEO's response on above results:**
+
+Looks like not only our brand, organic and direct traffic volumes growing, but they are growing as percentage of our paid traffic volume.
+
+
    
