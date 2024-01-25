@@ -40,7 +40,7 @@ From our data, to find direct traffic :
 
    Could you pull **organic search, direct type in and paid brand search sessions by month** and show those sessions as a % of **paid search nonbrand**
 
-   ```sql
+```sql
    
 SELECT 
 YEAR(dte) AS yr,
@@ -66,6 +66,6 @@ FROM website_sessions
 WHERE created_at < '2012-12-23') as sessions_channel_grp
 GROUP BY 1,2;
 
-   ```
+```
 
    
