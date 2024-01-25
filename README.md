@@ -14,7 +14,7 @@ Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysi
 1. Access and explore the ecommerce database.
 2. Analyze and optimize marketing channels ([Traffic Source Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/Traffic_source_analysis.md)), website performance ([Website Performance Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/analyzing_website_performance.md)), and the product portfolio([Channel Portfolio Management](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/channel_portfolio.md))
 3. Use website traffic and website performance data to tell a growth story of the company that has been live for 8 months ([Company's growth story](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/growth_story.md))
-4. Understand Brand-driven Traffic()
+4. Understand Brand-driven Traffic([Direct Traffic Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/direct_traffic_analysis.md))
 
 
 ## Database Overview
