@@ -33,7 +33,7 @@ From our data, to find direct traffic :
 
 ## Stakeholder's Request
 
-1. By: CEO
+   By: CEO
    Date: December 23, 2012
 
    A potential investor is asking if we are building any momentum with our brand or if we will need to keep relying on paid traffic.
