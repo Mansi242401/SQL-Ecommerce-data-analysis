@@ -1,7 +1,7 @@
 
 Analyzing branded or direct traffic is about **keeping a pulse on how well your brand is doing with consumers, and how well your brand drives business.**
 
-1. What is **DIRECT TRAFFIC?**
+What is **DIRECT TRAFFIC?**
 
 **Direct traffic** refers to visitors who come directly to a website by typing the website's URL into their browser's address bar or using a bookmark. It includes people who are familiar with the brand or have visited the website before and choose to return directly. Direct traffic can also encompass visitors who click on a link in an email, PDF document, or any other non-browser application that doesn't pass referrer information.
 
