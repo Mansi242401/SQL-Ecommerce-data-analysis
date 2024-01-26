@@ -57,7 +57,7 @@ Understanding and adapting to these seasonal patterns is crucial for e-commerce 
    
    ```
 
-   **Results:**
+**Results:**
 
    | yr   | mth | sessions | orders |
 |------|-----|----------|--------|
@@ -71,6 +71,7 @@ Understanding and adapting to these seasonal patterns is crucial for e-commerce 
 | 2012 | 10  | 8183     | 371    |
 | 2012 | 11  | 14011    | 618    |
 | 2012 | 12  | 10072    | 506    |
+
 
 ```sql
 
