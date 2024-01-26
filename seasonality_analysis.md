@@ -150,7 +150,7 @@ We will want to keep this in mind in 2013 as we think about customer support and
 
 
 ### 2. Business Pattern : Data for customer service
-   By : CEO
+   By : CEO <br>
    Date : January 5, 2013
 
    We are considering adding live chat support to the website to improve our customer experience. Could you **analyze the avg website session volume, by hour of day and by day week,** so that we can staff appropriately.
