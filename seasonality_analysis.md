@@ -1,3 +1,5 @@
+## Analyzing Seasonality and Business Pattern
+
 Seasonality and business patterns in the context of an e-commerce business refer to recurring trends, fluctuations, and behaviors that are influenced by specific seasons, events, or time periods throughout the year. These patterns often impact various aspects of an e-commerce operation, including sales, customer behavior, and marketing strategies. 
 Here's a breakdown of the concept:
 
