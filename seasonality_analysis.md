@@ -34,7 +34,7 @@ Understanding and adapting to these seasonal patterns is crucial for e-commerce 
 ## Stakeholder's Request
 
 ### 1. Seasonality
-By: CEO
+By: CEO <br>
 Date: January 2, 2013
 
 2012 was a great year for us. As we continue to grow, we should **take a look at 2012's monthly and weekly volume patterns, to see if we can find any seasonal trends we should plan for in 2013.**
@@ -141,7 +141,7 @@ The below query is used to understand the seasonality for the year 2012.
 
 **CEO's response**
 
-By : CEO
+By : CEO <br>
 Date : January 2, 2012
 
 This is great to see. Looks like we grew pretty steadily all year and saw significant volume around the holiday months(especially the weeks of black Friday and Cyber Monday)
