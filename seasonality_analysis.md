@@ -138,4 +138,11 @@ The below query is used to understand the seasonality for the year 2012.
 | 2012-12-23      | 1682     | 74     |
 | 2012-12-30      | 309      | 21     |
 
+**CEO's response**
 
+By : CEO
+Date : January 2, 2012
+
+This is great to see. Looks like we grew pretty steadily all year and saw significant volume around the holiday months(especially the weeks of black Friday and Cyber Monday)
+
+We will want to keep this in mind in 2013 as we think about customer support and inventory management.
