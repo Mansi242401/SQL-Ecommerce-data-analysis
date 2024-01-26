@@ -34,12 +34,12 @@ Understanding and adapting to these seasonal patterns is crucial for e-commerce 
 ## Stakeholder's Request
 
 ### 1. Seasonality
-       By: CEO
-       Date: January 2, 2013
+By: CEO
+Date: January 2, 2013
 
-   2012 was a great year for us. As we continue to grow, we should **take a look at 2012's monthly and weekly volume patterns, to see if we can find any seasonal trends we should plan for in 2013.**
+2012 was a great year for us. As we continue to grow, we should **take a look at 2012's monthly and weekly volume patterns, to see if we can find any seasonal trends we should plan for in 2013.**
 
-   **If you can pull session volume and order volume**, that would be excellent. <br>
+**If you can pull session volume and order volume**, that would be excellent. <br>
 
 The below query is used to understand the seasonality for the year 2012.
 
@@ -149,7 +149,8 @@ This is great to see. Looks like we grew pretty steadily all year and saw signif
 We will want to keep this in mind in 2013 as we think about customer support and inventory management.
 
 
-2. By : CEO
+### 2. Business Pattern : Data for customer service
+   By : CEO
    Date : January 5, 2013
 
    We are considering adding live chat support to the website to improve our customer experience. Could you **analyze the avg website session volume, by hour of day and by day week,** so that we can staff appropriately.
