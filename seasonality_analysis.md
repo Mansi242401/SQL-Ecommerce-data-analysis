@@ -3,9 +3,9 @@ Here's a breakdown of the concept:
 
 <br>1. Sales Fluctuations:<br>
 
-Holiday Seasons: E-commerce businesses often experience peaks in sales during holiday seasons such as Christmas, Thanksgiving, or Black Friday. Consumers tend to make more purchases during these periods due to promotions and festive offers.
-Back-to-School Season: For businesses that sell products related to education, there might be a surge in sales during back-to-school seasons.
-Seasonal Events: Products related to specific seasons (e.g., winter clothing, summer sports equipment) may witness varying demand throughout the year.
+* Holiday Seasons: E-commerce businesses often experience peaks in sales during holiday seasons such as Christmas, Thanksgiving, or Black Friday. Consumers tend to make more purchases during these periods due to promotions and festive offers.
+* Back-to-School Season: For businesses that sell products related to education, there might be a surge in sales during back-to-school seasons.
+* Seasonal Events: Products related to specific seasons (e.g., winter clothing, summer sports equipment) may witness varying demand throughout the year.
 
 <br>2. Customer Behavior:<br>
 
