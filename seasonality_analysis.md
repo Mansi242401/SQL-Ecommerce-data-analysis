@@ -157,3 +157,51 @@ We will want to keep this in mind in 2013 as we think about customer support and
 
    Let's avoid the holiday time period and use a date range of **Sep 15,2012 - Nov 15,2012**
    
+```sql
+
+   SELECT 
+   hour(created_at) as hr,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 0 THEN website_session_id ELSE NULL END) as monday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 1 THEN website_session_id ELSE NULL END) as tuesday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 2 THEN website_session_id ELSE NULL END) as wednesday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 3 THEN website_session_id ELSE NULL END) as thursday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 4 THEN website_session_id ELSE NULL END) as friday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 5 THEN website_session_id ELSE NULL END) as saturday,
+   COUNT(DISTINCT CASE WHEN weekday(created_at) = 6 THEN website_session_id ELSE NULL END) as sunday
+   FROM website_sessions
+   WHERE created_at BETWEEN '2012-09-15' AND '2012-11-15'
+   GROUP BY 1;
+```
+
+**Results:**
+
+| hr | monday | tuesday | wednesday | thursday | friday | saturday | sunday |
+|----|--------|---------|-----------|----------|--------|----------|--------|
+| 0  | 78     | 69      | 57        | 59       | 54     | 45       | 45     |
+| 1  | 59     | 60      | 48        | 39       | 57     | 45       | 24     |
+| 2  | 55     | 40      | 40        | 49       | 37     | 33       | 24     |
+| 3  | 51     | 36      | 42        | 32       | 29     | 35       | 27     |
+| 4  | 47     | 57      | 54        | 32       | 43     | 22       | 22     |
+| 5  | 45     | 49      | 46        | 43       | 37     | 39       | 35     |
+| 6  | 49     | 50      | 43        | 48       | 54     | 36       | 23     |
+| 7  | 66     | 70      | 67        | 85       | 56     | 51       | 43     |
+| 8  | 111    | 110     | 117       | 132      | 84     | 34       | 37     |
+| 9  | 158    | 141     | 176       | 154      | 140    | 68       | 54     |
+| 10 | 166    | 159     | 189       | 147      | 152    | 75       | 57     |
+| 11 | 162    | 172     | 224       | 173      | 167    | 65       | 69     |
+| 12 | 190    | 210     | 205       | 193      | 152    | 77       | 55     |
+| 13 | 160    | 207     | 187       | 165      | 173    | 73       | 76     |
+| 14 | 161    | 194     | 201       | 148      | 156    | 78       | 60     |
+| 15 | 194    | 154     | 228       | 188      | 170    | 62       | 64     |
+| 16 | 190    | 213     | 213       | 157      | 167    | 61       | 59     |
+| 17 | 175    | 143     | 182       | 158      | 103    | 58       | 68     |
+| 18 | 114    | 135     | 133       | 122      | 87     | 48       | 61     |
+| 19 | 112    | 127     | 120       | 93       | 114    | 64       | 58     |
+| 20 | 109    | 112     | 128       | 85       | 82     | 51       | 76     |
+| 21 | 82     | 113     | 103       | 75       | 58     | 51       | 92     |
+| 22 | 82     | 90      | 88        | 97       | 48     | 51       | 92     |
+| 23 | 79     | 77      | 86        | 85       | 61     | 48       | 75     |
+
+
+
+
