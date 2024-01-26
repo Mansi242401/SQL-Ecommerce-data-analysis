@@ -36,9 +36,11 @@ Understanding and adapting to these seasonal patterns is crucial for e-commerce 
 1. By: CEO
    Date: January 2, 2012
 
-   2012 was a great year for us. As we continue to grow, we should **take a look at 2012's monthly and weekly volume patterns, to see if we can find any seasonal trends we should plan for in 2013.
+   2012 was a great year for us. As we continue to grow, we should **take a look at 2012's monthly and weekly volume patterns, to see if we can find any seasonal trends we should plan for in 2013.**
 
-   **If you can pull session volume and order volume**, that would be excellent.
+   **If you can pull session volume and order volume**, that would be excellent. <br>
+
+The below query is used to understand the seasonality for the year 2012.
 
    ```sql
 
