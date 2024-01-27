@@ -159,49 +159,60 @@ We will want to keep this in mind in 2013 as we think about customer support and
    
 ```sql
 
-   SELECT 
+      SELECT
+   hr,
+   ROUND(AVG(CASE WHEN wkday = 0 THEN website_sessions ELSE NULL END),1) AS monday,
+   ROUND(AVG(CASE WHEN wkday = 1 THEN website_sessions ELSE NULL END),1) AS tuesday,
+   ROUND(AVG(CASE WHEN wkday = 2 THEN website_sessions ELSE NULL END),1) AS wednesday,
+   ROUND(AVG(CASE WHEN wkday = 3 THEN website_sessions ELSE NULL END),1) AS thursday,
+   ROUND(AVG(CASE WHEN wkday = 4 THEN website_sessions ELSE NULL END),1) AS friday,
+   ROUND(AVG(CASE WHEN wkday = 5 THEN website_sessions ELSE NULL END),1) AS saturday,
+   ROUND(AVG(CASE WHEN wkday = 6 THEN website_sessions ELSE NULL END),1) AS sunday
+   FROM
+   (SELECT 
+   date(created_at) as created_date,
+   weekday(created_at) as wkday,
    hour(created_at) as hr,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 0 THEN website_session_id ELSE NULL END) as monday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 1 THEN website_session_id ELSE NULL END) as tuesday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 2 THEN website_session_id ELSE NULL END) as wednesday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 3 THEN website_session_id ELSE NULL END) as thursday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 4 THEN website_session_id ELSE NULL END) as friday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 5 THEN website_session_id ELSE NULL END) as saturday,
-   COUNT(DISTINCT CASE WHEN weekday(created_at) = 6 THEN website_session_id ELSE NULL END) as sunday
+   count(DISTINCT website_session_id) as website_sessions
    FROM website_sessions
    WHERE created_at BETWEEN '2012-09-15' AND '2012-11-15'
+   GROUP BY 1,2,3) AS daily_hourly_sessions
    GROUP BY 1;
 ```
 
 **Results:**
 
-| hr | monday | tuesday | wednesday | thursday | friday | saturday | sunday |
-|----|--------|---------|-----------|----------|--------|----------|--------|
-| 0  | 78     | 69      | 57        | 59       | 54     | 45       | 45     |
-| 1  | 59     | 60      | 48        | 39       | 57     | 45       | 24     |
-| 2  | 55     | 40      | 40        | 49       | 37     | 33       | 24     |
-| 3  | 51     | 36      | 42        | 32       | 29     | 35       | 27     |
-| 4  | 47     | 57      | 54        | 32       | 43     | 22       | 22     |
-| 5  | 45     | 49      | 46        | 43       | 37     | 39       | 35     |
-| 6  | 49     | 50      | 43        | 48       | 54     | 36       | 23     |
-| 7  | 66     | 70      | 67        | 85       | 56     | 51       | 43     |
-| 8  | 111    | 110     | 117       | 132      | 84     | 34       | 37     |
-| 9  | 158    | 141     | 176       | 154      | 140    | 68       | 54     |
-| 10 | 166    | 159     | 189       | 147      | 152    | 75       | 57     |
-| 11 | 162    | 172     | 224       | 173      | 167    | 65       | 69     |
-| 12 | 190    | 210     | 205       | 193      | 152    | 77       | 55     |
-| 13 | 160    | 207     | 187       | 165      | 173    | 73       | 76     |
-| 14 | 161    | 194     | 201       | 148      | 156    | 78       | 60     |
-| 15 | 194    | 154     | 228       | 188      | 170    | 62       | 64     |
-| 16 | 190    | 213     | 213       | 157      | 167    | 61       | 59     |
-| 17 | 175    | 143     | 182       | 158      | 103    | 58       | 68     |
-| 18 | 114    | 135     | 133       | 122      | 87     | 48       | 61     |
-| 19 | 112    | 127     | 120       | 93       | 114    | 64       | 58     |
-| 20 | 109    | 112     | 128       | 85       | 82     | 51       | 76     |
-| 21 | 82     | 113     | 103       | 75       | 58     | 51       | 92     |
-| 22 | 82     | 90      | 88        | 97       | 48     | 51       | 92     |
-| 23 | 79     | 77      | 86        | 85       | 61     | 48       | 75     |
+| hr  | monday | tuesday | wednesday | thursday | friday | saturday | sunday |
+|-----|--------|---------|-----------|----------|--------|----------|--------|
+| 0   | 8.7    | 7.7     | 6.3       | 7.4      | 6.8    | 5.0      | 5.0    |
+| 1   | 6.6    | 6.7     | 5.3       | 4.9      | 7.1    | 5.0      | 3.0    |
+| 2   | 6.1    | 4.4     | 4.4       | 6.1      | 4.6    | 3.7      | 3.0    |
+| 3   | 5.7    | 4.0     | 4.7       | 4.6      | 3.6    | 3.9      | 3.4    |
+| 4   | 5.9    | 6.3     | 6.0       | 4.0      | 6.1    | 2.8      | 2.4    |
+| 5   | 5.0    | 5.4     | 5.1       | 5.4      | 4.6    | 4.3      | 3.9    |
+| 6   | 5.4    | 5.6     | 4.8       | 6.0      | 6.8    | 4.0      | 2.6    |
+| 7   | 7.3    | 7.8     | 7.4       | 10.6     | 7.0    | 5.7      | 4.8    |
+| 8   | 12.3   | 12.2    | 13.0      | 16.5     | 10.5   | 4.3      | 4.1    |
+| 9   | 17.6   | 15.7    | 19.6      | 19.3     | 17.5   | 7.6      | 6.0    |
+| 10  | 18.4   | 17.7    | 21.0      | 18.4     | 19.0   | 8.3      | 6.3    |
+| 11  | 18.0   | 19.1    | 24.9      | 21.6     | 20.9   | 7.2      | 7.7    |
+| 12  | 21.1   | 23.3    | 22.8      | 24.1     | 19.0   | 8.6      | 6.1    |
+| 13  | 17.8   | 23.0    | 20.8      | 20.6     | 21.6   | 8.1      | 8.4    |
+| 14  | 17.9   | 21.6    | 22.3      | 18.5     | 19.5   | 8.7      | 6.7    |
+| 15  | 21.6   | 17.1    | 25.3      | 23.5     | 21.3   | 6.9      | 7.1    |
+| 16  | 21.1   | 23.7    | 23.7      | 19.6     | 20.9   | 7.6      | 6.6    |
+| 17  | 19.4   | 15.9    | 20.2      | 19.8     | 12.9   | 6.4      | 7.6    |
+| 18  | 12.7   | 15.0    | 14.8      | 15.3     | 10.9   | 5.3      | 6.8    |
+| 19  | 12.4   | 14.1    | 13.3      | 11.6     | 14.3   | 7.1      | 6.4    |
+| 20  | 12.1   | 12.4    | 14.2      | 10.6     | 10.3   | 5.7      | 8.4    |
+| 21  | 9.1    | 12.6    | 11.4      | 9.4      | 7.3    | 5.7      | 10.2   |
+| 22  | 9.1    | 10.0    | 9.8       | 12.1     | 6.0    | 5.7      | 10.2   |
+| 23  | 8.8    | 8.6     | 9.6       | 10.6     | 7.6    | 5.3      | 8.3    |
 
+We can clearly observe that sessions are higher on weekdays between 8 am - 5 pm. Based on the above results the management can decide the staff requirements.
+Let us see now what the CEO has to say about the above results
+
+**CEO's Response:**
 
 
 
