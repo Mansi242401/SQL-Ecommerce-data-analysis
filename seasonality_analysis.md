@@ -214,5 +214,6 @@ Let us see now what the CEO has to say about the above results
 
 **CEO's Response:**
 
-
-
+I have been speaking with support companies and it sounds like ~10 sessions per hour per employee staffed is about right.
+Looks like we can plan on one support staff around the clock and then we should double up to two staff members from 8 am to 5 pm 
+Monday to Friday.
