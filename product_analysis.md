@@ -1,7 +1,7 @@
 
-# Product Sales Analysis
+# Product Analysis
 
-Product Sales Analysis help you to understand :
+Product Analysis help you to understand :
 
 ### 1. How each product contributes to your business ?
 ### 2. How product launches impact the overall portfolio ?
