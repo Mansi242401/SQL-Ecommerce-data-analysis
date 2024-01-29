@@ -19,7 +19,7 @@ KPIS used to understand the product performance:
 
 ## Stakeholder's Request
 
-1. By: CEO
+1. By: CEO <br>
    Date : Jan 4, 2013
 
    We are about to launch a new product and I would like to deep dive into our current flagship products.
