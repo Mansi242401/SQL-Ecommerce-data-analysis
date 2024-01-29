@@ -125,7 +125,7 @@ This type of analysis helps to understand:
    Now that we have a new product, I am thinking about our user path and conversion funnel. Let's look at the sessions that hit the **`/products` Page and see where they went next.** <br>
    Could you please pull **Click Through Rates from `/products` since the new product launch on January 6, 2013 by product and compare to the 3 months leading upto launch as a baseline** ?
 
-For the above problem, we will first find the records in the date range of October 6, 2012 (3 months before new product launch) to April 6, 2013 and tag each row as pre product launch and post product launch.
+For the above problem, we will first find the records in the date range of October 6, 2012 (3 months before new product launch on Jan 6, 2013) to April 6, 2013(3 mnoths after product launch) and tag each row as pre product launch or post product launch.
 
 
    ```sql
