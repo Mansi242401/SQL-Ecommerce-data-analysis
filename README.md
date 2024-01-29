@@ -16,7 +16,7 @@ Explore the [SQL file](https://github.com/Mansi242401/SQL-Ecommerce-data-analysi
 3. Use website traffic and website performance data to tell a growth story of the company that has been live for 8 months ([Company's growth story](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/growth_story.md))
 4. Understand Brand-driven Traffic ([Direct Traffic Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/direct_traffic_analysis.md))
 5. Understand Seasonality and Business Pattern ([Seasonality and pattern analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/seasonality_analysis.md))
-6. Product Analysis ([Product level Analysis]())
+6. Product Analysis ([Product level Analysis](https://github.com/Mansi242401/SQL-Ecommerce-data-analysis/blob/main/product_analysis.md))
 
 
 ## Database Overview
