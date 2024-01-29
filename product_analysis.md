@@ -42,7 +42,6 @@ KPIS used to understand the product performance:
 
 **Result:**
 
-
 | yr   | mnth | number_of_sales | total_revenue | total_margin |
 |------|------|------------------|---------------|--------------|
 | 2012 | 3    | 60               | 2999.40       | 1830.00      |
@@ -56,6 +55,7 @@ KPIS used to understand the product performance:
 | 2012 | 11   | 618              | 30893.82      | 18849.00     |
 | 2012 | 12   | 506              | 25294.94      | 15433.00     |
 | 2013 | 1    | 42               | 2099.58       | 1281.00      |
+
 
 2. By: CEO
    Date: April 5, 2013
