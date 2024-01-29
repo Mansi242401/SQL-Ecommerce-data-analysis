@@ -26,3 +26,16 @@ KPIS used to understand the product performance:
    Can you please pull monthly trends till date for **number of sales, total revenue and total margin generated** for the business ?
 
    
+```sql
+
+   SELECT 
+   YEAR(created_at) as yr,
+   MONTH(created_at) as mnth, 
+   COUNT(DISTINCT order_id) as number_of_sales,
+   SUM(price_usd) as total_revenue,
+   SUM(price_usd - cogs_usd) as total_margin
+   FROM orders
+   WHERE created_at < '2013-01-04'
+   GROUP BY 1,2;
+
+```
