@@ -85,7 +85,7 @@ KPIS used to understand the product performance:
 
    **Results:**
 
-   | yr   | mnth | sessions | orders | conv_rate | revenue_per_session | product_one_orders | product_two_orders |
+| yr   | mnth | sessions | orders | conv_rate | revenue_per_session  | product_one_orders  | product_two_orders  |
 |------|------|----------|--------|-----------|----------------------|---------------------|---------------------|
 | 2012 | 4    | 3734     | 99     | 0.0265    | 1.325391             | 99                  | 0                   |
 | 2012 | 5    | 3736     | 108    | 0.0289    | 1.445107             | 108                 | 0                   |
