@@ -155,7 +155,35 @@ For the above problem, we will first find the records in the date range of Octob
 
    ```
 If we run the above query, it returns 26405 rows with 4 columns - website_session_id, website_pageview_id, dte and time_period
-Next, we will find the pageview ids that come after /products page for all sessions in product_pageviews temporary table
+Next, we will find the pageview ids that come after /products page for all sessions in product_pageviews temporary table. 
+Below is a sample of first few rows and last few rows of data generated from above query :
+
+| website_session_id | website_pageview_id | dte       | time_period         |
+|--------------------:|---------------------:|-----------|---------------------|
+|               31517 |                67216 | 2012-10-06| A.Pre_product_2     |
+|               31518 |                67220 | 2012-10-06| A.Pre_product_2     |
+|               31519 |                67222 | 2012-10-06| A.Pre_product_2     |
+|               31521 |                67227 | 2012-10-06| A.Pre_product_2     |
+|               31524 |                67232 | 2012-10-06| A.Pre_product_2     |
+|               31525 |                67236 | 2012-10-06| A.Pre_product_2     |
+|               31528 |                67240 | 2012-10-06| A.Pre_product_2     |
+|               31532 |                67250 | 2012-10-06| A.Pre_product_2     |
+|               31534 |                67254 | 2012-10-06| A.Pre_product_2     |
+|               31536 |                67261 | 2012-10-06| A.Pre_product_2     |
+|               83758 |               187768 | 2013-04-05| B.Post_product_2    |
+|               83760 |               187774 | 2013-04-05| B.Post_product_2    |
+|               83764 |               187780 | 2013-04-05| B.Post_product_2    |
+|               83767 |               187790 | 2013-04-05| B.Post_product_2    |
+|               83769 |               187795 | 2013-04-05| B.Post_product_2    |
+|               83771 |               187802 | 2013-04-05| B.Post_product_2    |
+|               83774 |               187805 | 2013-04-05| B.Post_product_2    |
+|               83776 |               187811 | 2013-04-05| B.Post_product_2    |
+|               83775 |               187814 | 2013-04-05| B.Post_product_2    |
+|               83779 |               187825 | 2013-04-05| B.Post_product_2    |
+|               83783 |               187832 | 2013-04-05| B.Post_product_2    |
+
+Next, from the above data, we will find those website sessions that went from `/products` page to the next page. For that we will join the above table with website_pageviews table on session_id and find the next pageview id for those sessions. Sessions with `NULL` pageview_id indicate that those users did not go further after the `/products` page. 
+
 
 
 
