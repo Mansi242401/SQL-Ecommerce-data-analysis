@@ -125,10 +125,35 @@ This type of analysis helps to understand:
    Now that we have a new product, I am thinking about our user path and conversion funnel. Let's look at the sessions that hit the **`/products` Page and see where they went next.** <br>
    Could you please pull **Click Through Rates from `/products` since the new product launch on January 6, 2013 by product and compare to the 3 months leading upto launch as a baseline** ?
 
-For the above problem, we will first find the records in the date range of October 6, 2012 (3 months before new product launch on Jan 6, 2013) to April 6, 2013(3 mnoths after product launch) and tag each row as pre product launch or post product launch.
+For the above problem, we will first find the records in the date range of October 6, 2012 (3 months before new product launch on Jan 6, 2013) to April 6, 2013(3 months after product launch) and tag each row as pre product launch or post product launch.
 
 
    ```sql
 
+   -- create a temp table and store website session ids, website pageview ids and tag them as pre product launch and post product launch
+
+   CREATE TEMPORARY TABLE product_pageviews
+   SELECT
+   website_session_id,
+   website_pageview_id,
+   DATE(created_at),
+   CASE 
+	WHEN created_at < '2013-01-06' THEN 'A.Pre_product_2'
+    WHEN created_at >= '2013-01-06' THEN 'B.Post_product_2'
+    ELSE 'check logic'
+    END as time_period
+   FROM website_pageviews
+   WHERE created_at BETWEEN '2012-10-06' AND '2013-04-06'
+   AND pageview_url = '/products';
 
    ```
+If we run the above query, it returns 26405 rows with 4 columns - website_session_id, website_pageview_id, dte and time_period
+Next, we will find the pageview ids that come after /products page for all sessions in product_pageviews temporary table
+
+
+
+
+
+
+
+
