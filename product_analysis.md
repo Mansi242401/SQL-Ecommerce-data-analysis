@@ -130,13 +130,20 @@ For the above problem, we will first find the records in the date range of Octob
 
    ```sql
 
-   -- create a temp table and store website session ids, website pageview ids and tag them as pre product launch and post product launch
+   -- product pathing analysis
+   
+   -- Step 1: Find relevant /products pageviews with website_session_id
+   -- Step 2: Find the next pageview_id that occurs AFTER the product pageview
+   -- Step 3: Find the pageview url applicable to next pageview id 
+   -- Step 4: Summarize the data and analyze pre and post periods
+
+-- Step 1: From website_pageviews table extract the session_id, pageview_id, date and divide the time period between pre and post the launch of product 2, restrict the data for only 6 months ranging from 3 months before the launch of product 2 and 3 months after the launch of product 2 and url ending in `/products`
 
    CREATE TEMPORARY TABLE product_pageviews
    SELECT
    website_session_id,
    website_pageview_id,
-   DATE(created_at),
+   DATE(created_at) as dte,
    CASE 
 	WHEN created_at < '2013-01-06' THEN 'A.Pre_product_2'
     WHEN created_at >= '2013-01-06' THEN 'B.Post_product_2'
