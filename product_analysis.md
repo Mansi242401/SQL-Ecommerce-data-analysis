@@ -322,8 +322,25 @@ GROUP BY 1;
 | A.Pre_product_2   | 15696    | 11347               | 0.7229        | 11347      | 0.7229          | 0           | 0.0000           |
 | B.Post_product_2  | 10709    | 8200                | 0.7657        | 6654       | 0.6213          | 1546        | 0.1444           |
 
+It seems that percentage of users that clicked to the next page after `/products` has increased overall after the launch of second product. However, the same has reduced for first product post second product launch. Hence, we can say that launching additional product has benefitted the business overall.Let's see what the Website Manager has to say about it
 
+**Website Manager's Response**
 
+Looks like the percentage of `/products` pageviews that clicked to first product has gone down since the launch of product 2 but the overall Click Through Rate has gone up, so it seems to be generating additional product interest overall.
+
+**As a follow up, we should probably look at the conversion funnels for each product individually**
+
+2. By: Website Manager
+   Date: April 10, 2014
+
+   I'd like to look at our two products since Jan 6 and analyze **conversion funnel from each product page to conversion.**
+   It would be great if you could **produce a comparison between the two conversion funnels for all website traffic**
+
+   **Solution:**
+
+   For the above ask, we will first understand the navigation steps taken by users and then calculate click through rate for each webpage.
+
+   
 
 
 
