@@ -182,10 +182,145 @@ Below is a sample of first few rows and last few rows of data generated from abo
 |               83779 |               187825 | 2013-04-05| B.Post_product_2    |
 |               83783 |               187832 | 2013-04-05| B.Post_product_2    |
 
-Next, from the above data, we will find those website sessions that went from `/products` page to the next page. For that we will join the above table with website_pageviews table on session_id and find the next pageview id for those sessions. Sessions with `NULL` pageview_id indicate that those users did not go further after the `/products` page. 
+Next, from the above data, we will find those website sessions that went from `/products` page to the next page. For that we will join the above table with website_pageviews table on session_id and find the next pageview id for those sessions. Sessions with `NULL` pageview_id indicate that those users did not go further after the `/products` page. We will save it in a temporary table - session_w_nxt_pageview_id
+
+```sql
 
 
+CREATE Temporary Table session_w_nxt_pageview_id
+SELECT 
+pp.time_period,
+pp.website_session_id,
+MIN(wp.website_pageview_id) AS min_next_pageview_id
+FROM product_pageviews pp
+LEFT JOIN website_pageviews wp
+ON pp.website_session_id = wp.website_session_id
+AND wp.website_pageview_id > pp.website_pageview_id
+GROUP BY 1,2;
 
+```
+
+| time_period       | website_session_id | min_next_pageview_id |
+|-------------------|---------------------|----------------------|
+| A.Pre_product_2   | 31517               | 67217                |
+| A.Pre_product_2   | 31518               | 67221                |
+| A.Pre_product_2   | 31519               | 67223                |
+| A.Pre_product_2   | 31521               | 67228                |
+| A.Pre_product_2   | 31524               | 67233                |
+| A.Pre_product_2   | 31525               | 67237                |
+| A.Pre_product_2   | 31528               | 67241                |
+| A.Pre_product_2   | 31532               | 67253                |
+| A.Pre_product_2   | 31534               | 67255                |
+| A.Pre_product_2   | 31536               | 67262                |
+| A.Pre_product_2   | 31545               | 67273                |
+| A.Pre_product_2   | 31549               | 67281                |
+| A.Pre_product_2   | 31551               | NULL                 |
+| A.Pre_product_2   | 31552               | NULL                 |
+| A.Pre_product_2   | 31559               | 67293                |
+| A.Pre_product_2   | 31560               | 67296                |
+| A.Pre_product_2   | 31562               | 67302                |
+| B.Post_product_2  | 83748               | NULL                 |
+| B.Post_product_2  | 83753               | NULL                 |
+| B.Post_product_2  | 83757               | NULL                 |
+| B.Post_product_2  | 83758               | 187770               |
+| B.Post_product_2  | 83760               | 187776               |
+| B.Post_product_2  | 83764               | 187781               |
+| B.Post_product_2  | 83767               | 187791               |
+| B.Post_product_2  | 83769               | 187797               |
+| B.Post_product_2  | 83771               | NULL                 |
+| B.Post_product_2  | 83774               | 187806               |
+| B.Post_product_2  | 83776               | 187813               |
+| B.Post_product_2  | 83775               | 187817               |
+| B.Post_product_2  | 83779               | 187826               |
+| B.Post_product_2  | 83783               | 187833               |
+
+The above data shows the session ids and pageview ids of pages that user navigated to after the `/products` page. The above data is actually showing only the first and last few rows. It returns 26405 records and the `NULL` values indicate those records that did not go to any page after `/products` page
+
+```sql
+-- find the pageview url associated with any applicable next pageview id and save it in a temporary table named - session_w_nxt_pageview_url
+
+CREATE TEMPORARY TABLE session_w_nxt_pageview_url
+SELECT 
+swnpi.time_period,
+swnpi.website_session_id,
+wp.pageview_url AS next_page_url
+FROM session_w_nxt_pageview_id swnpi
+LEFT JOIN website_pageviews wp
+ON swnpi.min_next_pageview_id = wp.website_pageview_id;
+
+```
+
+| time_period       | website_session_id  | next_page_url               |
+|-------------------|---------------------|-----------------------------|
+| A.Pre_product_2   | 31517               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31518               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31519               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31521               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31524               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31525               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31528               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31532               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31534               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31536               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31545               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31549               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31551               | NULL                        |
+| A.Pre_product_2   | 31552               | NULL                        |
+| A.Pre_product_2   | 31559               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31560               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31562               | /the-original-mr-fuzzy      |
+| A.Pre_product_2   | 31563               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83730               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83732               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83733               | NULL                        |
+| B.Post_product_2  | 83735               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83738               | NULL                        |
+| B.Post_product_2  | 83739               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83741               | NULL                        |
+| B.Post_product_2  | 83742               | NULL                        |
+| B.Post_product_2  | 83743               | NULL                        |
+| B.Post_product_2  | 83744               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83746               | NULL                        |
+| B.Post_product_2  | 83748               | NULL                        |
+| B.Post_product_2  | 83753               | NULL                        |
+| B.Post_product_2  | 83757               | NULL                        |
+| B.Post_product_2  | 83758               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83760               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83764               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83767               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83769               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83771               | NULL                        |
+| B.Post_product_2  | 83774               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83776               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83775               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83779               | /the-original-mr-fuzzy      |
+| B.Post_product_2  | 83783               | /the-original-mr-fuzzy      |
+
+The above table returns only the urls associated with the pageview_ids that user navigated to after the `/products` page
+Next, we will summarize the data and anlayze the pre and post period data and calculate the percentage.
+
+```sql
+
+SELECT 
+time_period,
+COUNT(DISTINCT website_session_id) AS sessions,
+COUNT(DISTINCT CASE WHEN next_page_url IS NOT NULL THEN website_session_id ELSE NULL END) AS sessions_w_nxt_page,
+COUNT(DISTINCT CASE WHEN next_page_url IS NOT NULL THEN website_session_id ELSE NULL END)/COUNT(DISTINCT website_session_id) AS perc_w_nxt_pg,
+COUNT(DISTINCT CASE WHEN next_page_url = '/the-original-mr-fuzzy' THEN website_session_id ELSE NULL END) AS to_mrfuzzy,
+COUNT(DISTINCT CASE WHEN next_page_url = '/the-original-mr-fuzzy' THEN website_session_id ELSE NULL END)/COUNT(DISTINCT website_session_id) AS perc_to_mrfuzzy,
+COUNT(DISTINCT CASE WHEN next_page_url = '/the-forever-love-bear' THEN website_session_id ELSE NULL END) AS to_lovebear,
+COUNT(DISTINCT CASE WHEN next_page_url = '/the-forever-love-bear' THEN website_session_id ELSE NULL END)/COUNT(DISTINCT website_session_id) AS perc_to_lovebear
+FROM session_w_nxt_pageview_url
+GROUP BY 1;
+
+```
+
+**Result:**
+
+| time_period       | sessions | sessions_w_nxt_page | perc_w_nxt_pg | to_mrfuzzy | perc_to_mrfuzzy | to_lovebear | perc_to_lovebear |
+|-------------------|----------|---------------------|---------------|------------|-----------------|-------------|------------------|
+| A.Pre_product_2   | 15696    | 11347               | 0.7229        | 11347      | 0.7229          | 0           | 0.0000           |
+| B.Post_product_2  | 10709    | 8200                | 0.7657        | 6654       | 0.6213          | 1546        | 0.1444           |
 
 
 
