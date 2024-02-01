@@ -330,7 +330,7 @@ Looks like the percentage of `/products` pageviews that clicked to first product
 
 **As a follow up, we should probably look at the conversion funnels for each product individually**
 
-2. By: Website Manager
+2. By: Website Manager <br>
    Date: April 10, 2013
 
    I'd like to look at our two products since Jan 6, 2013 and analyze **conversion funnel from each product page to conversion.**
