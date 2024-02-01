@@ -431,9 +431,25 @@ We had found that adding a second product increased overall CTR from the /produc
 
 Seems like the second product was a great addition for our business, I wonder if we should add a third.
 
+### Cross Selling and Product Portfolio Analysis
 
+Cross Selling is about understanding which products users are most likely to buy together, and offering smart product recommendations. 
+Analysing this data helps to understand the impact of cross selling on revenue and conversion rates.
 
+3. By: CEO <br>
+   Date: November 22, 2013
 
+On Sep 25th, we started giving customers the option to add a second product while on the /cart page. Morgan says this has been positive but i would like your take on it.
+Could you please compare the month before vs month after the change? I would like to see CTR from the /cart page, average products per Order, AOV and overall revenue per /cart page view.
+
+**Solution:**
+In order_items table, we have a column named `is_primary_item` which contains binary values, to find the cross sold item the value of this column would be 0
+```sql
+
+SELECT
+
+FROM
+WHERE created_at BETWEEN '2013-08-25' AND '2013-10-25'
 
 
 
