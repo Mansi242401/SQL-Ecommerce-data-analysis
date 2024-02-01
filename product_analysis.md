@@ -340,7 +340,100 @@ Looks like the percentage of `/products` pageviews that clicked to first product
 
    For the above ask, we will first understand the navigation steps taken by users and then calculate click through rate for each webpage.
 
-   
+```sql
+-- use the following query to find all the webpages that are visited during this period
+
+
+SELECT 
+distinct pageview_url
+FROM website_pageviews 
+WHERE created_at BETWEEN '2013-01-06' AND '2013-04-10';
+
+
+-- the above query results in following webpages  - `/the-original-mr-fuzzy`, `/cart`,  `/shipping`, `/billing-2`, `/thank-you-for-your-order`, `/the-forever-love-bear`, `/lander-1`, `/home`, `/products`
+
+-- From the above webpages we are interested in only pages that are clicked after `/products` webpage. The website flow would be as under
+-- 1. `/products` --> `/the-original-mr-fuzzy` --> `/cart` --> `/shipping` --> `/billing-2` --> `/thank-you-for-your-order`
+-- 2. `/products` --> `/the-forever-love-bear` --> `/cart` --> `/shipping` --> `/billing-2` --> `/thank-you-for-your-order`
+
+
+WITH t1 AS (
+SELECT website_session_id,
+website_pageview_id
+FROM website_pageviews 
+WHERE pageview_url IN ('/the-original-mr-fuzzy', '/the-forever-love-bear')
+AND created_at BETWEEN '2013-01-06' AND '2013-04-10'
+)
+,t2 AS (
+SELECT 
+wp.pageview_url, 
+t1.website_session_id,
+wp.website_pageview_id,
+CASE WHEN wp.pageview_url = '/cart' THEN 1 ELSE 0 END AS cart,
+CASE WHEN wp.pageview_url = '/shipping' THEN 1 ELSE 0 END AS shipping,
+CASE WHEN wp.pageview_url = '/billing-2' THEN 1 ELSE 0 END AS billing,
+CASE WHEN wp.pageview_url = '/thank-you-for-your-order' THEN 1 ELSE 0 END AS thankyou
+FROM t1
+LEFT JOIN website_pageviews wp 
+ON t1.website_session_id = wp.website_session_id
+AND wp.website_pageview_id >= t1.website_pageview_id
+WHERE created_at BETWEEN '2013-01-06' AND '2013-04-10'
+)
+,t3 AS
+(
+SELECT 
+website_session_id,
+MIN(website_pageview_id) as pageview_id,
+SUM(cart) AS cart_sessions,
+SUM(shipping) AS shipping_sessions,
+SUM(billing) AS billing_sessions,
+SUM(thankyou) AS thankyou_sessions
+FROM t2 
+GROUP BY 1
+), t4 AS
+(
+SELECT 
+wp.pageview_url,
+COUNT(DISTINCT t3.website_session_id) as sessions,
+SUM(cart_sessions) AS to_cart,
+SUM(shipping_sessions) AS to_shipping,
+SUM(billing_sessions) AS to_billing,
+SUM(thankyou_sessions) AS to_thankyou 
+FROM t3
+LEFT JOIN website_pageviews wp
+ON wp.website_pageview_id = t3.pageview_id
+GROUP BY 1
+)
+SELECT pageview_url,
+to_cart/sessions AS product_pg_CTR,
+to_shipping/to_cart AS cart_pg_CTR,
+to_billing/to_shipping AS shipping_pg_CTR,
+to_thankyou/to_billing AS billing_pg_CTR
+FROM t4
+GROUP BY 1;
+
+```
+
+**Result:**
+
+| pageview_url              | product_pg_CTR  | cart_pg_CTR | shipping_pg_CTR  | billing_pg_CTR |
+|---------------------------|-----------------|-------------|------------------|----------------|
+| /the-forever-love-bear    | 0.5485          | 0.6876      | 0.8093           | 0.6168         |
+| /the-original-mr-fuzzy    | 0.4349          | 0.6860      | 0.8205           | 0.6363         |
+
+The above results suggest that conversion rates are higher for the bear when adding to cart.However, overall from product name to thankyou page, the conversion rate is higher for mr fuzzy. Let us see what the Website Manager has to say about it.
+
+**Website Manager's response on April 10,2013**
+
+This is great to see!
+
+We had found that adding a second product increased overall CTR from the /products page, and this analysis shows that the Love Bear has the better Click Rate to the /cart page and comparable rates throughout the rest of the funnel.
+
+Seems like the second product was a great addition for our business, I wonder if we should add a third.
+
+
+
+
 
 
 
