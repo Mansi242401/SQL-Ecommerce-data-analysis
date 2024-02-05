@@ -440,7 +440,7 @@ Analysing this data helps to understand the impact of cross selling on revenue a
    Date: November 22, 2013
 
 On Sep 25th, we started giving customers the option to add a second product while on the /cart page. Morgan says this has been positive but i would like your take on it.
-Could you please compare the month before vs month after the change? I would like to see CTR from the /cart page, average products per Order, AOV and overall revenue per /cart page view.
+Could you please compare the month before vs month after the change? I would like to see CTR from the `/cart` page, average products per Order, AOV and overall revenue per `/cart` page view.
 
 **Solution:**
 In order_items table, we have a column named `is_primary_item` which contains binary values, to find the cross sold item the value of this column would be 0
