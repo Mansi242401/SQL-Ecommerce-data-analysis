@@ -538,5 +538,10 @@ GROUP BY time_period;
 
 ```
 
+**Results:**
 
+| time_period           | cart_sessions | clickthroughs | cart_CTR | orders_purchased | products_purchased | products_per_order | revenue  | AOV       | rev_per_cart_session |
+|-----------------------|---------------|---------------|----------|-------------------|---------------------|---------------------|----------|-----------|----------------------|
+| A. pre_cross_sell     | 1830          | 1229          | 0.6716   | 652               | 652                 | 1.0000              | 33523.48 | 51.416380 | 18.318842            |
+| B. post_cross_sell    | 1975          | 1351          | 0.6841   | 671               | 701                 | 1.0447              | 36402.99 | 54.251848 | 18.431894            |
 
