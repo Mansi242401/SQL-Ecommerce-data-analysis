@@ -443,13 +443,100 @@ On Sep 25th, we started giving customers the option to add a second product whil
 Could you please compare the month before vs month after the change? I would like to see CTR from the `/cart` page, average products per Order, AOV and overall revenue per `/cart` page view.
 
 **Solution:**
-In order_items table, we have a column named `is_primary_item` which contains binary values, to find the cross sold item the value of this column would be 0
+
 ```sql
 
-SELECT
+ -- Extract the website_session_id and pageview_ids for date range as requested - 3 months data and for sessions that reached to /cart page
+   CREATE TEMPORARY TABLE sessions_seen_cart
+   SELECT
+      CASE 
+	WHEN created_at < '2013-09-25' THEN 'A. pre_cross_sell' 
+	WHEN created_at >= '2013-09-25' THEN 'B. post_cross_sell'
+	ELSE 'check_logic' 
+	END AS time_period,
+    website_session_id,
+   website_pageview_id
+   FROM website_pageviews
+   WHERE created_at BETWEEN '2013-08-25' AND '2013-10-25'
+   AND pageview_url = '/cart';
+   
+   -- returns 3805 records
+   
+   -- find those sesssions that made to the /shipping page after /cart
+   
+   CREATE TEMPORARY TABLE shipping_sessions
+   SELECT 
+   ssc.time_period,
+   ssc.website_session_id,
+   MIN(wp.website_pageview_id) AS pv_id_after_cart
+   FROM 
+   sessions_seen_cart ssc
+   LEFT JOIN website_pageviews wp
+   ON wp.website_session_id = ssc.website_session_id
+   AND wp.website_pageview_id > ssc.website_pageview_id
+   GROUP BY 1,2
+   HAVING MIN(wp.website_pageview_id) IS NOT NULL;
+   
+   -- the above query returns 2580 records i.e only records that made it to /shipping page
+   
+   -- In the next query, we will find the records that placed orders and extract website_session_id, order_id , number of purchased items and price_usd for those records
+   
+   CREATE TEMPORARY TABLE pre_post_sessions_orders
+   SELECT 
+   ssc.time_period,
+   ssc.website_session_id,
+   o.order_id,
+   o.items_purchased,
+   o.price_usd
+   FROM sessions_seen_cart ssc
+   INNER JOIN 
+   orders o ON
+   ssc.website_session_id = o.website_session_id;
+   
+-- The above query returns 1323 records i.e records that made to the /thankyou page
 
+
+-- the below query returns 3805 records and will be used as a subquery for the summarized required data 
+SELECT ssc.time_period,
+ssc.website_session_id,
+CASE WHEN ss.website_session_id IS NULL THEN 0 ELSE 1 END AS shipping_sessions,
+CASE WHEN ppso.order_id IS NULL THEN 0 ELSE 1 END AS placed_orders,
+ppso.items_purchased,
+ppso.price_usd
+FROM sessions_seen_cart ssc
+LEFT JOIN shipping_sessions ss
+ON ssc.website_session_id = ss.website_session_id
+LEFT JOIN pre_post_sessions_orders ppso
+ON ssc.website_session_id = ppso.website_session_id
+ORDER BY website_session_id;
+
+SELECT 
+time_period,
+COUNT(DISTINCT website_session_id) AS cart_sessions,
+SUM(shipping_sessions) AS clickthroughs,
+SUM(shipping_sessions)/COUNT(DISTINCT website_session_id) as cart_CTR,
+SUM(placed_orders) AS orders_purchased,
+SUM(items_purchased) AS products_purchased,
+SUM(items_purchased)/SUM(placed_orders) AS products_per_order,
+SUM(price_usd) AS revenue,
+SUM(price_usd)/SUM(placed_orders) AS AOV,
+SUM(price_usd)/COUNT(DISTINCT website_session_id) AS rev_per_cart_session
 FROM
-WHERE created_at BETWEEN '2013-08-25' AND '2013-10-25'
+(SELECT ssc.time_period,
+ssc.website_session_id,
+CASE WHEN ss.website_session_id IS NULL THEN 0 ELSE 1 END AS shipping_sessions,
+CASE WHEN ppso.order_id IS NULL THEN 0 ELSE 1 END AS placed_orders,
+ppso.items_purchased,
+ppso.price_usd
+FROM sessions_seen_cart ssc
+LEFT JOIN shipping_sessions ss
+ON ssc.website_session_id = ss.website_session_id
+LEFT JOIN pre_post_sessions_orders ppso
+ON ssc.website_session_id = ppso.website_session_id
+ORDER BY website_session_id) as final_data
+GROUP BY time_period;
+
+```
 
 
 
