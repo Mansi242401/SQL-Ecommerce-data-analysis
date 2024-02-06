@@ -547,3 +547,10 @@ GROUP BY time_period;
 
 We can see the changes in the performance post cross sell feature. The revenue has increased by 9% , Average Order Value increased by USD 3.00 post cross sell, Revenue per cart also increased from USD 18.32 to USD 18.43. Let's see what the CEO has to say about it.
 
+**CEO's response**
+
+It looks like the CTR from the /cart page din't go down and that our **products per order, Avg Order Value and Revenue per /cart session are all up slightly since the cross sell feature was added** Doesn't look like a game changer, but the trend looks positive. Great Analysis!!
+
+
+
+
