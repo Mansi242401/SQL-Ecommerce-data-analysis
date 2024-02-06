@@ -558,5 +558,41 @@ It looks like the CTR from the /cart page din't go down and that our **products 
    Good Morning, On December 12, 2013, we launched a third product targeting the Birthday Gift Market (Birthday Bear).
    Could you please run a **pre-post analysis comparing the month before vs month after, in terms of session-to-order conversion rate, AOV, products per order, revenue per session?**
 
-   
+```sql
+
+ SELECT
+      CASE 
+	WHEN ws.created_at < '2013-12-12' THEN 'A. pre_birthday_bear' 
+	WHEN ws.created_at >= '2013-12-12' THEN 'B. post_birthday_bear'
+	ELSE 'check_logic' 
+	END AS time_period,
+    COUNT(DISTINCT ws.website_session_id) AS sessions,
+    COUNT(DISTINCT o.order_id) AS orders,
+    COUNT(DISTINCT o.order_id)/COUNT(DISTINCT ws.website_session_id) AS conversion_rate,
+    SUM(o.price_usd) AS total_revenue,
+    SUM(o.items_purchased) AS total_products_sold,
+    SUM(o.price_usd)/COUNT(DISTINCT o.order_id) AS Avg_order_value,
+    SUM(o.items_purchased)/COUNT(DISTINCT o.order_id) AS products_per_order,
+    SUM(o.price_usd)/COUNT(DISTINCT ws.website_session_id) AS revenue_per_session
+   FROM website_sessions ws
+   LEFT JOIN orders o
+   ON ws.website_session_id = o.website_session_id
+   WHERE ws.created_at BETWEEN '2013-11-12' AND '2014-01-12'
+   GROUP BY 1;
+
+```
+
+**Results:**
+
+| time_period            | sessions | orders | conversion_rate | total_revenue | total_products_sold | Avg_order_value | products_per_order | revenue_per_session |
+|------------------------|----------|--------|-----------------|---------------|---------------------|-----------------|--------------------|---------------------|
+| A. pre_birthday_bear   | 17343    | 1055   | 0.0608          | 57208.96      | 1104                | 54.226502       | 1.0464             | 3.298677            |
+| B. post_birthday_bear  | 13383    | 940    | 0.0702          | 53515.44      | 1056                | 56.931319       | 1.1234             | 3.998763            |
+
+From the above results, we can state that the conversion rate has improved post the launch of third product, avg order value has also gone up, products per order have also gone up and revenue per session has also increased. Let's see what the CEO has to say about these results
+
+**CEO's Response**
+
+Great! It looks like all our critical metrics have improved since we launched the third product. This is fantastic. I am going to meet with Tom about increasing our ad spend now that we are driving more revenue per session, and we may also consider adding a fourth product.
+
 
