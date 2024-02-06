@@ -545,3 +545,5 @@ GROUP BY time_period;
 | A. pre_cross_sell     | 1830          | 1229          | 0.6716   | 652               | 652                 | 1.0000              | 33523.48 | 51.416380 | 18.318842            |
 | B. post_cross_sell    | 1975          | 1351          | 0.6841   | 671               | 701                 | 1.0447              | 36402.99 | 54.251848 | 18.431894            |
 
+We can see the changes in the performance post cross sell feature. The revenue has increased by 9% , Average Order Value increased by USD 3.00 post cross sell, Revenue per cart also increased from USD 18.32 to USD 18.43. Let's see what the CEO has to say about it.
+
