@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-As an Ecommerce Data Analyst collaborating with the CEO, Marketing Director, and Website Manager, I conducted a comprehensive analysis to optimize marketing channels, measure website conversion performance, and assess the impact of new product launches. This project involves SQL analysis using MySQL Workbench and Tableau Dashboard for presenting the growth of the company in first 8 months of launch.
+As an Ecommerce Data Analyst collaborating with the CEO, Marketing Director, and Website Manager, I conducted a comprehensive analysis to optimize marketing channels, measure website conversion performance, and assess the impact of new product launches. This project involves SQL analysis using MySQL Workbench.
 
 I have restricted the scope of analysis to a very critical and fundamental table, "orders," which hosts key data that database analysts often work with. Among these tables, "orders" is particularly crucial for every ecommerce company, serving as the primary source of revenue. The analysis starts here and extends to related tables, aiming to understand the contributions of marketing activities to orders and evaluate the overall performance of the website.
 
