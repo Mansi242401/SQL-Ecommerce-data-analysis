@@ -552,5 +552,11 @@ We can see the changes in the performance post cross sell feature. The revenue h
 It looks like the CTR from the /cart page din't go down and that our **products per order, Avg Order Value and Revenue per /cart session are all up slightly since the cross sell feature was added** Doesn't look like a game changer, but the trend looks positive. Great Analysis!!
 
 
+4. By: CEO <br>
+   Date: January 12, 2014 <br>
 
+   Good Morning, On December 12, 2013, we launched a third product targeting the Birthday Gift Market (Birthday Bear).
+   Could you please run a **pre-post analysis comparing the month before vs month after, in terms of session-to-order conversion rate, AOV, products per order, revenue per session?**
+
+   
 
