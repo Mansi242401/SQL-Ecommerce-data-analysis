@@ -6,6 +6,14 @@ However, with our analysis, we will understand the following :
 1. Where our customers are coming from (Email, Social Media, Search and Direct Traffic) and
 2. Which channels are driving the highest quality traffic (CVR - Conversion Rate)
 
+### Components meaning for | utm_source | utm_campaign | http_referer   
+
+"gsearch": This likely indicates search traffic coming from Google, one of the most prominent search engines.
+
+"nonbrand": This indicates that the search queries driving this traffic are not specifically branded. In other words, users are searching for generic terms rather than branded product names or specific brands.
+
+"brand": This indicates that the search queries driving this traffic are specifically branded. In other words, users are searching for specific brand names or branded product names.
+
 ## Stakeholder Requests <br>
 
 **1.(a) Site traffic breadkdown**<br>
