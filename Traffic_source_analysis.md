@@ -6,6 +6,17 @@ However, with our analysis, we will understand the following :
 1. Where our customers are coming from (Email, Social Media, Search and Direct Traffic) and
 2. Which channels are driving the highest quality traffic (CVR - Conversion Rate)
 
+   
+## Stakeholder Requests <br>
+
+**1.(a) Site traffic breadkdown**<br>
+<br>
+Date of request : April 12,2012 <br>
+By: CEO <br>
+
+We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
+I would like to see a breakdown by **UTM source, campaign and referring domain** if possible.
+
 ### Components meaning for | utm_source | utm_campaign | http_referer   
 
 1. "gsearch": This likely indicates search traffic coming from Google, one of the most prominent search engines.
@@ -17,17 +28,6 @@ However, with our analysis, we will understand the following :
 4. If utm_source and utm_campaign are NULL and http_referer is 'www.gsearch.com' It suggests that traffic is coming from google search but not from a paid campaign.
 
 5. If all three parameters - utm_source, utm_campaign, http_referer, are NULL, it indicates that users are coming from direct typing the website.
-
-   
-## Stakeholder Requests <br>
-
-**1.(a) Site traffic breadkdown**<br>
-<br>
-Date of request : April 12,2012 <br>
-By: CEO <br>
-
-We have been live for almost a month now and we are starting to generate sales. Help me understand where the bulk of our website sessions are coming from, through yesterday?
-I would like to see a breakdown by **UTM source, campaign and referring domain** if possible.
 
 **SQL QUERY**
 ```sql
