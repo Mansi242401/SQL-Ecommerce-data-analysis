@@ -27,6 +27,13 @@ Explore the database schema used for this project: [Ecommerce Schema](https://gi
 
 (Note: I utilized [dbdiagram.io](https://dbdiagram.io/) for constructing the ER diagram, providing a visual representation of the database structure.)
 
+Here is a list of all the tables that are there in this database and the date range of data in all tables
+1. Website Sessions - March 19,2012 to March 19, 2015
+2. Website Pageviews - March 19,2012 to March 19, 2015
+3. Orders - March 19,2012 to March 19, 2015
+4. Order Item Refunds - April 6, 2012 to April 1, 2015
+5. Products - March 19,2012 to February 5, 2014
+
 ## Analysis Highlights
 
 The analysis focuses on:
