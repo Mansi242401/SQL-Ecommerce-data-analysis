@@ -10,12 +10,15 @@ However, with our analysis, we will understand the following :
 
 1. "gsearch": This likely indicates search traffic coming from Google, one of the most prominent search engines.
 
-2. "nonbrand": This indicates that the search queries driving this traffic are not specifically branded. In other words, users are searching for generic terms rather than branded product names or specific brands. These are a part of paid ad campaigns.
+2. "nonbrand": This indicates that the search queries driving this traffic are not specifically branded. In other words, users are searching for generic terms rather than branded product names or specific brands. These are a part of paid ad campaign.
 
-3. "brand": This indicates that the search queries driving this traffic are specifically branded. In other words, users are searching for specific brand names or branded product names.
+3. "brand": This indicates that the search queries driving this traffic are specifically branded. In other words, users are searching for specific brand names or branded product names. This is a part of paid ad campaign.
 
-4. If utm_source and utm_campaign are NULL and http_refere is 'www.gsearch.com' It suggests that traffic is coming from google search but not from a paid campaign
+4. If utm_source and utm_campaign are NULL and http_referer is 'www.gsearch.com' It suggests that traffic is coming from google search but not from a paid campaign.
 
+5. If all three parameters - utm_source, utm_campaign, http_referer, are NULL, it indicates that users are coming from direct typing the website.
+
+   
 ## Stakeholder Requests <br>
 
 **1.(a) Site traffic breadkdown**<br>
