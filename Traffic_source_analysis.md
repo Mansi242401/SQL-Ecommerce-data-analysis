@@ -43,7 +43,9 @@ ORDER BY num_of_sessions DESC;
 
 ```
 **Result**
+
 <br>
+
 | utm_source | utm_campaign | http_referer                | num_of_sessions |
 |------------|--------------|-----------------------------|------------------|
 | gsearch    | nonbrand     | https://www.gsearch.com     | 3613             |
@@ -53,6 +55,7 @@ ORDER BY num_of_sessions DESC;
 | NULL       | NULL         | https://www.bsearch.com     | 7                |
 | bsearch    | brand        | https://www.bsearch.com     | 7                |
 
+Here is a [tableau link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/WebsiteTrafficSource/Dashboard1?publish=yes) to the dashboard displaying the paid traffic sources and their breakdown.
 
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
