@@ -55,7 +55,7 @@ ORDER BY num_of_sessions DESC;
 | NULL       | NULL         | https://www.bsearch.com     | 7                |
 | bsearch    | brand        | https://www.bsearch.com     | 7                |
 
-Here is a [tableau link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/WebsiteTrafficSource/Dashboard1?publish=yes) to the tableau dashboard displaying the paid traffic sources and their breakdown as that is what the stakeholders are more concerned about.
+Here is a [tableau link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/WebsiteTrafficSource/Dashboard1?publish=yes) to the tableau interactive dashboard displaying the paid traffic sources and their breakdown as that is what the stakeholders are more concerned about.
 
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
@@ -103,7 +103,7 @@ Here is a [link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/Co
 
 ###  Bid Optmization
 
-Analyzing for bid optmization is about understanding the value of various segments of paid traffic, so that you can optiimize your marketing budget.
+Analyzing for bid optmization is about understanding the value of various segments of paid traffic, so that you can optimize your marketing budget.
 
 **3. Gsearch Volume Trends** <br>
 <br>
