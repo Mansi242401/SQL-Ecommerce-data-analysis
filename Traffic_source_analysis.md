@@ -184,13 +184,15 @@ GROUP BY 1;
 
 The conversion rate is clearly higher when desktop is used to access the website.
 
+Here's a [tableau dashboard](https://public.tableau.com/app/profile/mansi.vermani7229/viz/ConversionRatebydevice/Dashboard2?publish=yes) that shows the above result on a bubble chart 
+
 **4.b) RE:GSearch Device Level Performance** (Marketing Director's Response) <br>
 
 Date of Request : May 11, 2012 <br>
 By: Marketing Director <br>
 
 I am going to increase our bids on desktop. 
-When we bid higher, we will rank higher in the auctions. So i think your insights here should lead to a sales boost.
+When we bid higher, we will rank higher in the auctions. So I think your insights here should lead to a sales boost.
 
 **5. Gsearch device level trends** <br>
 
