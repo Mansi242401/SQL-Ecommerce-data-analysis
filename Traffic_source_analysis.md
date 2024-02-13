@@ -140,6 +140,7 @@ GROUP BY 1,2;
 
 We observe that the session volume weekly count is lower post bidding down gsearch nonbrand on 2012-04-15.
 
+Here is a [link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/sessions-weeklytrendbiddownimpact/Dashboard1?publish=yes) to the tableau dashboard used to visualize the above results 
 
 **3b. RE: Gsearch Volume Trends**(Marketing Director's Response)
 
