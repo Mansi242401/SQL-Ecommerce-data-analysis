@@ -233,7 +233,10 @@ GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
 | 2012-05-13 00:54:12     | 403           | 214          |
 | 2012-05-20 00:43:31     | 661           | 190          |
 | 2012-05-27 00:05:26     | 585           | 183          |
-| 2012-06-03 00:43:23     | 582           | 157          |
+| 2012-06-03 00:43:23     | 625           | 167          |
+| 2012-06-10 00:00:22     | 689           | 186          |
+| 2012-06-17 00:34:49     | 145           | 34           |
+    
 
 From the above result, we observe that after the bid change on 2012-05-19, the session count is increased and is higher than previous weeks. However, for mobile sessions, the same is reducing.
 
