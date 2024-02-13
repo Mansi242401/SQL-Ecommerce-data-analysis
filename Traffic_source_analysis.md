@@ -150,7 +150,7 @@ Let me think on this. I will follow up with some ideas.
 
 **4.a) GSearch Device Level Performance** <br>
 
-Date of request : May 11,2012 <br>
+Date of request : May 11, 2012 <br>
 By :  Marketing Director <br>
 
 I was trying to use our website on mobile the other day and the experience was not that great.
