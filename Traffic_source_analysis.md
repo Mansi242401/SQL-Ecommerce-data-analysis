@@ -183,7 +183,7 @@ GROUP BY 1;
 
 The conversion rate is clearly higher when desktop is used to access the website.
 
-**4.b) RE:GSearch Device Level Performance** (Marketinig Director's Response) <br>
+**4.b) RE:GSearch Device Level Performance** (Marketing Director's Response) <br>
 
 Date of Request : May 11, 2012 <br>
 By: Marketing Director <br>
