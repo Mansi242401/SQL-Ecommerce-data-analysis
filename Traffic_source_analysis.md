@@ -153,7 +153,7 @@ Let me think on this. I will follow up with some ideas.
 Date of request : May 11,2012 <br>
 By :  Marketing Director <br>
 
-I as trying to use our website on mobile the other day and the experience was not that great.
+I was trying to use our website on mobile the other day and the experience was not that great.
 Could you pull **conversion rates from session to order** by **device type**?
 
 If desktop performance is better than on mobile, we may be able to bid up for desktop specifically to get more volume
