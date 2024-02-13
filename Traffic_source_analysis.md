@@ -55,7 +55,7 @@ ORDER BY num_of_sessions DESC;
 | NULL       | NULL         | https://www.bsearch.com     | 7                |
 | bsearch    | brand        | https://www.bsearch.com     | 7                |
 
-Here is a [tableau link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/WebsiteTrafficSource/Dashboard1?publish=yes) to the dashboard displaying the paid traffic sources and their breakdown as that is what the stakeholders are more concerned about.
+Here is a [tableau link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/WebsiteTrafficSource/Dashboard1?publish=yes) to the tableau dashboard displaying the paid traffic sources and their breakdown as that is what the stakeholders are more concerned about.
 
 Based on above result, it's obvious that majority website sessions are coming from gsearch non-brand segment. On sharing these results with the stakeholder, there is a counter request as under :
 
@@ -99,6 +99,7 @@ WHERE ws.utm_source = 'gsearch' AND ws.utm_campaign = 'nonbrand' and ws.created_
 | 3895     | 112    | 0.0288                          |
 
 Since, the conversion rate is at 2.88% which is lower than 4% which is minimum required as per the Marketing Director, the stakeholders may reduce the bids.
+Here is a [link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/ConversionRatebySourcetype/Dashboard1) to the tableau Dashboard showing the conversion rates by traffic source type and sub-type.
 
 ###  Bid Optmization
 
