@@ -240,6 +240,8 @@ GROUP BY YEAR(ws.created_at),WEEK(ws.created_at);
 
 From the above result, we observe that after the bid change on 2012-05-19, the session count is increased and is higher than previous weeks. However, for mobile sessions, the same is reducing.
 
+Here is a link to the [Tableau dashboard](https://public.tableau.com/app/profile/mansi.vermani7229/viz/SessionsbyDeviceType-weeklytrend/Dashboard3?publish=yes) presenting the sessions by device type on weekly basis.
+
 **5b) RE: Gsearch device level trends** <br> (Marketing Director's response)
 
 Date : June 19,2012 <br>
