@@ -6,6 +6,9 @@ However, with our analysis, we will understand the following :
 1. Where our customers are coming from (Email, Social Media, Search and Direct Traffic) and
 2. Which channels are driving the highest quality traffic (CVR - Conversion Rate)
 
+### Findings
+
+Majority website sessions are coming from Gsearch Nonbrand. However, the conversion rate from sessions to orders is below required 4%. Hence, stakeholders reduced bids which impacted the session volumes negatively. After digging further into gsearch nonbrand sessions by device, it is observed that majority website sessions are on desktop.Hence, the stakeholders increased the bids for gsearch nonbrand desktop category which resulted in increased traffic as well as optimum conversion rate.
    
 ## Stakeholder Requests <br>
 
