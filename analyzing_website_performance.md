@@ -84,6 +84,8 @@ ORDER BY COUNT(DISTINCT website_session_id) DESC
 | /home            | 10714                 |
 
 Looks like our traffic all comes through our homepage right now.
+Here is a [dashboard](https://public.tableau.com/app/profile/mansi.vermani7229/viz/TopEntryPages/Dashboard2?publish=yes) showing the same results in a bar chart.
+
 
 **2.b) Website Manager's Response**
 
