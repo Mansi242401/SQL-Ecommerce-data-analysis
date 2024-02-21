@@ -36,6 +36,9 @@ ORDER BY session_count DESC;
 | /billing                        | 716           |
 | /thank-you-for-your-order       | 306           |
 
+
+Here is a link to the [dashboard](https://public.tableau.com/app/profile/mansi.vermani7229/viz/Topviewedwebsitepages/Dashboard1?publish=yes) showing the above results in a bar chart.
+
 **1.b) Website Manager's Response**
 
 It definitely seems like **the homepage, the products page, and the Mr. Fuzzy page** get the bulk of our traffic. I would like to understand traffic patterns more.
