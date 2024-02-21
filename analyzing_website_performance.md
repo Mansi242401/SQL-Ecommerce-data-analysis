@@ -50,9 +50,12 @@ Date: June 12, 2012
 
 Would you be able to pull a list of top entry pages? I want to confirm where our users are hitting the site. If you could pull all entry pages and rank them on entry volume, that would be great.
 
+The entry pages in this case would be - '/home', '/lander-1','/lander-2','/lander-3','/lander-4','/lander-5' Hence, we will put a filter to include only these pages and their session count.
+
 **SQL QUERY:**
 
 ```sql
+
 WITH CTE as 
 (SELECT
 website_pageview_id, 
@@ -65,9 +68,13 @@ FROM website_pageviews)
 SELECT pageview_url as landing_page,
 COUNT(DISTINCT website_session_id) 
 FROM CTE
-WHERE CTE.session_rank = 1 AND CTE.created_at < '2012-06-12'
+WHERE  
+CTE.created_at < '2012-06-12'
+AND pageview_url IN ('/home', '/lander-1','/lander-2','/lander-3','/lander-4','/lander-5')
 GROUP BY landing_page
+ORDER BY COUNT(DISTINCT website_session_id) DESC
 ;
+
 ```
 
 **Result:**
