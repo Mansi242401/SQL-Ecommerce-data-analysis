@@ -203,6 +203,8 @@ GROUP BY
 | 11048          | 6538             | 0.5918      |
 
 
+Here is a [Tableau Dashboard link](https://public.tableau.com/app/profile/mansi.vermani7229/viz/BounceratesforLandingpages/Dashboard3?publish=yes) that shows the bounce  rates for all landing pages based on the date range selected.
+
 **3.b) Website Manager's Response**
 
 Ouch, almost a 60% bounce rate. 
