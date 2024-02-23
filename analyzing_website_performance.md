@@ -222,86 +222,57 @@ Make sure to look at the time period where **/lander-1** was getting the traffic
 **QUERY:** <br>
 
 ```sql
+-- 1. find the first date when '/lander-1' was launched
 
--- A/B Test
--- Steps:
--- 1. find out when the new page was launched
--- 2. find first_website_pageview_id for relevant sessions
--- 3. identifying the landing page for each session
--- 4. count pageviews for each session to identify bounces
--- 5. summarise total sessions and bounce rates, by landing page
+SELECT pageview_url,MIN(created_at)
+FROM website_pageviews 
+WHERE pageview_url LIKE '/lander-1'
+GROUP BY pageview_url;
 
+-- This returns '2012-06-19' as the first date when the '/lander-1' was launched
+-- Next, we will find the number of  website urls visited in each website session and those showing one are the ones bounced, i.e. did not go further,  we are extracting the min pageview_id to know the landing page id in order to get the landing page url later from the pageview_id
 
--- 1. Finding the first instance of /lander-1 page to set the analysis timeframe
-
+WITH CTE AS (
 SELECT 
-MIN(created_at) as first_created_at,
-MIN(website_pageview_id) as first_pageview_id
-FROM website_pageviews
-WHERE pageview_url = '/lander-1' and created_at < '2012-07-28';
-
--- first_pageview_id for /lander-1 is 23504
-
--- 2.  find first_website_pageview_id for relevant sessions and store them in a temp table - first_test_pageviews
-CREATE TEMPORARY TABLE first_test_pageviews
+website_session_id,
+COUNT(DISTINCT pageview_url) as pages_visited,
+MIN(website_pageview_id) as pgvw_id
+FROM (
+SELECT
+pageview_url, 
+website_session_id,
+website_pageview_id
+FROM website_pageviews 
+WHERE created_at BETWEEN '2012-06-19' AND '2012-07-27') url_sessions
+GROUP BY 1
+),
+t1 AS
+(
 SELECT 
-wp.website_session_id,
-MIN(wp.website_pageview_id) as min_pageview_id
-FROM website_pageviews wp
-INNER JOIN website_sessions ws -- since we need to find for gsearch nonbrand 
-ON wp.website_session_id = ws.website_session_id
-WHERE ws.utm_source = 'gsearch' 
-AND ws.utm_campaign = 'nonbrand'
-AND ws.created_at < '2012-07-28'
-AND wp.website_pageview_id > 23503
-GROUP BY wp.website_session_id;
-;
-
--- 3. Fetch the landing page url for each session and restricting it to only /home page and /lander-1 page
-
-CREATE TEMPORARY TABLE non_brand_test_sessions_w_landing_page
-SELECT ftp.website_session_id,
-wp.pageview_url as landing_page
-FROM first_test_pageviews ftp
-LEFT JOIN website_pageviews wp
-ON ftp.min_pageview_id = wp.website_pageview_id
-WHERE wp.pageview_url IN ('/home', '/lander-1');
-
--- 4. Count pageviews for each session and then find only the bounced sessions using 'having' clause
-
-CREATE TEMPORARY TABLE nonbrand_test_bounced_sessions
-SELECT ts.website_session_id,
-ts.landing_page,
-COUNT(wp.website_pageview_id) AS count_of_pages_viewed
-FROM website_pageviews wp
-LEFT JOIN non_brand_test_sessions_w_landing_page ts
-ON wp.website_session_id = ts.website_session_id
-GROUP BY 1, 2
-HAVING COUNT(wp.website_pageview_id)  = 1 ;
-
--- 5.Summarize total sessions, bounced sessions by landing page
-
-SELECT 
-non_brand_test_sessions_w_landing_page.landing_page,
-COUNT(DISTINCT non_brand_test_sessions_w_landing_page.website_session_id
-) AS total_sessions,
-COUNT(DISTINCT 
-nonbrand_test_bounced_sessions.website_session_id
-) AS bounced_sessions,
-COUNT(DISTINCT nonbrand_test_bounced_sessions.website_session_id)/COUNT(DISTINCT non_brand_test_sessions_w_landing_page.website_session_id) AS bounce_rate
-FROM non_brand_test_sessions_w_landing_page
-LEFT JOIN nonbrand_test_bounced_sessions
-ON non_brand_test_sessions_w_landing_page.website_session_id = nonbrand_test_bounced_sessions.website_session_id
+wp.pageview_url,
+CTE.website_session_id, 
+pages_visited
+FROM CTE
+LEFt JOIN
+website_pageviews wp
+ON CTE.pgvw_id = wp.website_pageview_id
+)
+SELECT
+pageview_url,
+COUNT(CASE WHEN pages_visited = 1 THEN website_session_id END) AS bounced_sessions,
+COUNT(website_session_id) AS total_sessions,
+COUNT(CASE WHEN pages_visited = 1 THEN website_session_id END)/COUNT(website_session_id) AS bounce_rate
+FROM t1
 GROUP BY 1
 ;
 
 ```
  **Results:**
 
- | landing_page | total_sessions | bounced_sessions | bounce_rate |
-| ------------ | -------------- | ----------------- | ----------- |
-| /home        | 2261           | 1319              | 0.5834      |
-| /lander-1    | 2315           | 1232              | 0.5322      |
+| landing_page  | total_sessions | bounced_sessions  | bounce_rate |
+| ------------  | -------------- | ----------------- | ----------- |
+| /lander-1     | 2255           | 1200              | 0.5322      |
+| /home         | 2909           | 1555              | 0.5345      |
 
 It looks like there is a slight fall in the bounce rate when lander-1 is used as a landing page. 
 
